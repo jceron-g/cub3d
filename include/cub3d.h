@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/02/26 11:17:41 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:46:56 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 
 #include "libft/libft.h"
 
-typedef struct s_coordinate
+typedef struct s_config
 {
-	char	*north;
-	char	*south;
-	char	*east;
-	char	*west;
-	char	*floor;
-}			t_coordinate;
+	char	*no_texture;
+	char	*so_texture;
+	char	*we_texture;
+	char	*ea_texture;
+	char	*floor_color;
+	char	*ceiling_color;
+	char	**map;
+}	t_config;
 
-
+int	count_lines(const char *filename);
+int	parse_cub_file(const char *filename, t_config *config);
+void check_extension(char *str);
 
 #endif
