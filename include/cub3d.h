@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/02/26 15:46:56 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:33:53 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ typedef struct s_config
 	char	*floor_color;
 	char	*ceiling_color;
 	char	**map;
+	char	**file; //Me guardo el archivo .cub porque va a ser mas facil de trabajar con esto despues.
 }	t_config;
 
-int	count_lines(const char *filename);
-int	parse_cub_file(const char *filename, t_config *config);
-void check_extension(char *str);
+void 	check_extension(char *str);
+void	read_map_file(char *filename, t_config *config);
+void	free_config(t_config *config);
 
 #endif
