@@ -6,7 +6,7 @@
 #    By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 17:06:26 by jceron-g          #+#    #+#              #
-#    Updated: 2025/02/25 17:10:21 by jceron-g         ###   ########.fr        #
+#    Updated: 2025/02/26 11:12:23 by jceron-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME_B =
 USER = jceron-g & malena-b
 CC = gcc
 CFLAGS = -Wextra -Wall -Werror -g
-LIBFT = lib/libft
+LIBFT = include/libft
 SRC_DIR = src/
 OBJ_DIR = obj/
 SRC_DIR_BONUS =
