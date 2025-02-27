@@ -6,13 +6,13 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:40:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/02/26 16:37:02 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:50:57 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void check_extension(char *str)
+void	check_extension(char *str)
 {
 	int		len;
 	char	*aux;
@@ -97,4 +97,29 @@ void	read_map_file(char *filename, t_config *config)
 	}
 	store_lines(fd, config, num_lines);
 	close(fd);
+}
+
+void	save_data(t_config *config)
+{
+	char	**file;
+	int		i;
+
+	file = config->file;
+	i = 0;
+	while (file[i])
+	{
+		if (ft_strncmp("NO ", file[i], 3) == 0)
+			save_routes(&config->no, space_skip_save(file[i] + 3), config);
+		else if (ft_strncmp("SO ", file[i], 3) == 0)
+			save_routes(&config->so, space_skip_save(file[i] + 3), config);
+		else if (ft_strncmp("WE ", file[i], 3) == 0)
+			save_routes(&config->we, space_skip_save(file[i] + 3), config);
+		else if (ft_strncmp("EA ", file[i], 3) == 0)
+			save_routes(&config->ea, space_skip_save(file[i] + 3), config);
+		else if (ft_strncmp("F ", file[i], 2) == 0)
+			save_routes(&config->f_rgb, space_skip_save(file[i] + 2), config);
+		else if (ft_strncmp("C ", file[i], 2) == 0)
+			save_routes(&config->c_rgb, space_skip_save(file[i] + 2), config);
+		i++;
+	}
 }

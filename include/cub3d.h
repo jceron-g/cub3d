@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/02/26 16:33:53 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:41:38 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,22 @@
 
 typedef struct s_config
 {
-	char	*no_texture;
-	char	*so_texture;
-	char	*we_texture;
-	char	*ea_texture;
-	char	*floor_color;
-	char	*ceiling_color;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f_rgb;
+	char	*c_rgb;
 	char	**map;
-	char	**file; //Me guardo el archivo .cub porque va a ser mas facil de trabajar con esto despues.
+	char	**file;
+	int		data_saved;
 }	t_config;
 
 void 	check_extension(char *str);
 void	read_map_file(char *filename, t_config *config);
 void	free_config(t_config *config);
+char 	*space_skip_save(char *str);
+void	save_data(t_config *config);
+void	save_routes(char **coord, char *route, t_config *config);
 
 #endif
