@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:40:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/02/27 13:50:57 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:35:57 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	store_lines(int fd, t_config *config, int num_lines)
 	config->file = (char **)malloc(sizeof(char *) * (num_lines + 1));
 	if (!config->file)
 	{
-		ft_printf("Error: No se pudo reservar memoria\n");
+		ft_printf("Error: malloc failed\n");
 		exit(1);
 	}
 	i = 0;
@@ -84,7 +84,7 @@ void	read_map_file(char *filename, t_config *config)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error: No se pudo abrir el archivo\n");
+		ft_printf("Error: file could not be opened\n");
 		exit(1);
 	}
 	num_lines = count_lines(fd);
@@ -92,7 +92,7 @@ void	read_map_file(char *filename, t_config *config)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error: No se pudo abrir el archivo\n");
+		ft_printf("Error: file could not be opened\n");
 		exit(1);
 	}
 	store_lines(fd, config, num_lines);
