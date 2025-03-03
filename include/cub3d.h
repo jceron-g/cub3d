@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/02/27 13:41:38 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:28:09 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 #include "libft/libft.h"
+#include "MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_config
 {

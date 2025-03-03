@@ -6,7 +6,7 @@
 #    By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 17:06:26 by jceron-g          #+#    #+#              #
-#    Updated: 2025/02/26 16:33:23 by jceron-g         ###   ########.fr        #
+#    Updated: 2025/03/03 11:27:45 by jceron-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ USER = jceron-g & malena-b
 CC = gcc
 CFLAGS = -Wextra -Wall -Werror -g
 LIBFT = include/libft
+MLX42 	= include/MLX42/build/libmlx42.a
+MLX_FLAGS = -Iinclude -ldl -lglfw -g -pthread -lm 
 SRC_DIR = src/
 OBJ_DIR = obj/
 SRC_DIR_BONUS =
@@ -44,10 +46,14 @@ OBJF = .cache_exists
 
 all: $(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) $(MLX42)
 			@make all -C $(LIBFT)
-			@$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft  -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) $(MLX42) $(MLX_FLAGS) -lft  -o $(NAME)
 			@echo "$(GREEN)Compilation successful!$(RESET)"
+
+$(MLX42):
+		@cmake -B include/MLX42/build -S include/MLX42
+		@cmake --build include/MLX42/build -j4
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 			@echo "$(BLUE)Compiling, please wait.: $(RESET) $(notdir $<)"
@@ -67,6 +73,8 @@ $(OBJ_DIR)%.o: $(SRC_DIR_BONUS)%.c | $(OBJF)
 
 clean:
 			@rm -frf $(OBJ_DIR)
+			@make clean -s -C include/libft/
+			@make clean -s -C include/MLX42/build/
 			@make all clean -C $(LIBFT)
 			@echo "$(RED)Cleaning libraries, please wait.$(RESET)"
 			@echo "$(RED)Cleaning program executables, please wait.$(RESET)"
@@ -74,6 +82,8 @@ clean:
 fclean:
 			@rm -rf $(OBJ_DIR)
 			@rm -rf $(NAME)
+			@make clean -s -C include/libft/
+			@make clean -s -C include/MLX42/build/
 			@rm -rf $(NAME_B)
 			@rm -rf $(OBJ_BONUS)
 			@make fclean -C $(LIBFT)
