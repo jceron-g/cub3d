@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:47:37 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/02/27 13:17:52 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:02:47 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,21 @@ void	save_routes(char **coord, char *route, t_config *config)
 	if (!*coord)
 		*coord = route;
 	config->data_saved++;
+}
+
+int	check_data(t_config *config)
+{
+	if (!config->no)
+		return (0);
+	else if (!config->so)
+		return (0);
+	else if (!config->ea)
+		return (0);
+	else if (!config->we)
+		return (0);
+	else if (!config->c_rgb)
+		return (0);
+	else if (!config->f_rgb)
+		return (0);
+	return (1);
 }

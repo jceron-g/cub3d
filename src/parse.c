@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:40:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/03 12:35:57 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:12:02 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void	store_lines(int fd, t_config *config, int num_lines)
 {
 	char	*line;
 	int		i;
-	size_t	len;
 
 	config->file = (char **)malloc(sizeof(char *) * (num_lines + 1));
 	if (!config->file)
@@ -65,9 +64,6 @@ static void	store_lines(int fd, t_config *config, int num_lines)
 	line = get_next_line(fd);
 	while (line)
 	{
-		len = ft_strlen(line);
-		if (len > 0 && line[len - 1] == '\n')
-			line[len - 1] = '\0';
 		config->file[i] = ft_strdup(line);
 		free(line);
 		i++;
@@ -121,5 +117,9 @@ void	save_data(t_config *config)
 		else if (ft_strncmp("C ", file[i], 2) == 0)
 			save_routes(&config->c_rgb, space_skip_save(file[i] + 2), config);
 		i++;
+		if (config->data_saved >= 6)
+			break ;
 	}
+	if (check_data(config))
+		save_map(i, config, file);
 }
