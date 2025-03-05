@@ -6,7 +6,7 @@
 #    By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 17:06:26 by jceron-g          #+#    #+#              #
-#    Updated: 2025/03/05 13:02:26 by jceron-g         ###   ########.fr        #
+#    Updated: 2025/03/05 15:33:27 by jceron-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ all: $(NAME)
 
 $(NAME):	$(OBJ) $(MLX42)
 			@make all -C $(LIBFT)
+			@echo "$(GREEN)Welcome to $(USER) Cub3D!$(RESET)"
 			@$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) $(MLX42) $(MLX_FLAGS) -lft  -o $(NAME)
 			@echo "$(GREEN)Compilation successful!$(RESET)"
 
