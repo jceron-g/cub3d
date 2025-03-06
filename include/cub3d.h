@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/05 13:00:07 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:14:36 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_config
 /*PARSE*/
 void	check_extension(char *str);
 void	read_map_file(char *filename, t_config *config);
-void	free_config(t_config *config);
 /*UTILS*/
 char	*space_skip_save(char *str);
 void	save_data(t_config *config);
@@ -45,6 +44,12 @@ int		check_data(t_config *config);
 int		ft_isspace(char c);
 int		ft_strempty(char *str);
 void	save_map(int i, t_config *config, char **file);
+int		ft_check_digit(char *str);
+void	print_error(char *str, t_config *config);
+/*FREE*/
+void	free_matrix(char **str);
+void	free_config(t_config *config);
+void	validate_rgb(char *str, t_config *config, char **rgb_dest);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:40:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/05 13:12:02 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:26:36 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,40 @@ void	save_data(t_config *config)
 		else if (ft_strncmp("EA ", file[i], 3) == 0)
 			save_routes(&config->ea, space_skip_save(file[i] + 3), config);
 		else if (ft_strncmp("F ", file[i], 2) == 0)
-			save_routes(&config->f_rgb, space_skip_save(file[i] + 2), config);
+			validate_rgb(space_skip_save(file[i] + 2), config, &config->f_rgb);
 		else if (ft_strncmp("C ", file[i], 2) == 0)
-			save_routes(&config->c_rgb, space_skip_save(file[i] + 2), config);
+			validate_rgb(space_skip_save(file[i] + 2), config, &config->c_rgb);
 		i++;
 		if (config->data_saved >= 6)
 			break ;
 	}
 	if (check_data(config))
 		save_map(i, config, file);
+}
+
+void	validate_rgb(char *str, t_config *config, char **rgb_dest)
+{
+	char	**split;
+	int		i;
+
+
+	split = ft_split(str, ',');
+	if (!split || !split[0] || !split[1] || !split[2] || split[3])
+	{
+		free_matrix(split);
+		print_error("Error: Invalid RGB format\n", config);
+	}
+	printf("%s", split[0]);
+	i = 0;
+	while (i < 3)
+	{
+		if (!ft_check_digit(split[i]) || ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
+		{
+			free_matrix(split);
+			print_error("Error: RGB value out of range\n", config);
+		}
+		i++;
+	}
+	free_matrix(split);
+	*rgb_dest = ft_strdup(str);
 }

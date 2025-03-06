@@ -1,55 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   auxiliar_functions.c                               :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 10:36:02 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/06 14:14:18 by jceron-g         ###   ########.fr       */
+/*   Created: 2025/03/06 10:56:22 by jceron-g          #+#    #+#             */
+/*   Updated: 2025/03/06 10:58:00 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	ft_isspace(char c)
+void	free_config(t_config *config)
 {
-	return (c == ' ' || c == '\t' || c == '\n');
+	int	i;
+
+	if (config->file)
+	{
+		i = 0;
+		while (config->file[i])
+		{
+			free(config->file[i]);
+			i++;
+		}
+		free(config->file);
+	}
 }
 
-int	ft_strempty(char *str)
+void	free_matrix(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (str == NULL)
+		return ;
+	while (str[i] != NULL)
 	{
-		if (!ft_isspace(str[i]))
-			return (0);
+		free(str[i]);
+		str[i] = NULL;
 		i++;
 	}
-	return (1);
-}
-
-int	ft_check_digit(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	print_error(char *str, t_config *config)
-{
-	if (config)
-		free_config(config);
-	ft_putstr_fd(str, 2);
-	config->error = 1;
-	exit(1);
+	free (str);
+	str = NULL;
 }

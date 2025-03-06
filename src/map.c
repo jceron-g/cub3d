@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 14:39:19 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/05 15:25:32 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:43:12 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,53 +30,16 @@ void	save_map(int i, t_config *config, char **file)
 		config->map[j++] = ft_strdup(file[i++]);
 	config->map[j] = NULL;
 	j = -1;
-	i = 0;
+	//i = 0;
 	while (config->map[++j])
 	{
 		i = 0;
 		while (config->map[j][i++])
 		{
 			if (!ft_strchr(VALID_CHARS, config->map[j][i]))
-			{
-				config->error = 1;
-				printf("ERRORRR\n");
-				exit(0);
-			}
+				print_error("Error: Invalid characters detected\n", config);
 		}
 	}
 }
 
-// void	save_map(int i, t_config *config, char **file)
-// {
-// 	int	size;
-// 	int	j;
-	
-// 	size = i;
-// 	while (file[i][0] == '\n')
-// 		i++;
-// 	while (file[size])
-// 		size++;
-// 	config->map = (char **)malloc(sizeof(char *) * (size - i + 1));
-// 	if (!config->map)
-// 		return ;
-// 	j = 0;
-// 	while (file[i])
-// 		config->map[j++] = ft_strdup(file[i++]);
-// 	config->map[j] = NULL;
-// 	j = 0;
-// 	while (config->map[j])
-// 	{
-// 		i = 0;
-// 		while (config->map[j][i++])
-// 		{
-// 			if (!ft_strchr(VALID_CHARS, config->map[j][i]))
-// 			{
-// 				config->error = 1;
-// 				printf("ERRORRR\n");
-// 				exit(0);
-// 			}
-// 		}
-// 		j++;
-// 	}
-// }
 
