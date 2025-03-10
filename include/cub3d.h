@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jacer <jacer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/06 14:14:36 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:50:15 by jacer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ typedef struct s_config
 }			t_config;
 
 # define VALID_CHARS	"NOWS01\n\t "
+# define FOV 60.0
+# define PI 3.14159265
+# define WIDTH 1600
+# define HEIGHT 900
 
 /*PARSE*/
 void	check_extension(char *str);
