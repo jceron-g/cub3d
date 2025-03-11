@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacer <jacer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/10 13:50:15 by jacer            ###   ########.fr       */
+/*   Updated: 2025/03/11 11:28:01 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ typedef struct s_config
 	int		data_saved;
 	int		error;
 }			t_config;
+
+typedef struct s_ray
+{
+	double	angle;
+	double	cos;
+	double	sin;	
+}			t_ray;
+
+typedef struct s_cube
+{
+	t_config	*config;
+	t_ray		*ray;
+	mlx_t		*mlx;
+}
 
 # define VALID_CHARS	"NOWS01\n\t "
 # define FOV 60.0

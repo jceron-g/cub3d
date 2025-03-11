@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:40:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/06 16:50:24 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:58:56 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ void	save_data(t_config *config)
 		else if (ft_strncmp("EA ", file[i], 3) == 0)
 			save_routes(&config->ea, space_skip_save(file[i] + 3), config);
 		else if (ft_strncmp("F ", file[i], 2) == 0)
-		save_routes(&config->f_rgb, space_skip_save(file[i] + 2), config);
+			save_routes(&config->f_rgb, space_skip_save(file[i] + 2), config);
 		else if (ft_strncmp("C ", file[i], 2) == 0)
-		save_routes(&config->c_rgb, space_skip_save(file[i] + 2), config);
+			save_routes(&config->c_rgb, space_skip_save(file[i] + 2), config);
 		i++;
 		if (config->data_saved >= 6)
 			break ;
@@ -126,21 +126,22 @@ void	save_data(t_config *config)
 
 void	validate_rgb(char *str, t_config *config, char **rgb_dest)
 {
-	char	**split;
 	int		i;
+	char	**split_spaces;
+	char	**split_commas;
 
-
-	split = ft_split(str, ',');
+	split_spaces = ft_split(str, ' ');
+	split_commas = ft_split(split_spaces[1], ',');
 	i = 0;
 	while (i < 3)
 	{
-		if (!ft_check_digit(split[i]) || ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
+		if (!ft_check_digit(split_commas[i]) || ft_atoi(split_commas[i]) < 0 || ft_atoi(split_commas[i]) > 255)
 		{
-			free_matrix(split);
+			free_matrix(split_commas);
 			print_error("Error: RGB value out of range\n", config);
 		}
 		i++;
 	}
-	free_matrix(split);
+	free_matrix(split_commas);
 	*rgb_dest = ft_strdup(str);
 }
