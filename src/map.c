@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 14:39:19 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/06 10:43:12 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:55:16 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	save_map(int i, t_config *config, char **file)
 		config->map[j++] = ft_strdup(file[i++]);
 	config->map[j] = NULL;
 	j = -1;
-	//i = 0;
 	while (config->map[++j])
 	{
 		i = 0;

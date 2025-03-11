@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+         #
+#    By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 17:06:26 by jceron-g          #+#    #+#              #
-#    Updated: 2025/03/06 10:58:30 by jceron-g         ###   ########.fr        #
+#    Updated: 2025/03/11 12:13:13 by malena-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ BLUE      = \033[34;1m
 CYAN      = \033[37;1m
 RED		  = \033[31;1m
 
-SRC_FILES = main parse utils map auxiliar_functions free
+SRC_FILES = main parse parse2 utils map auxiliar_functions free
 SRC_FILES_BONUS = 
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

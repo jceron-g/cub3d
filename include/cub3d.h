@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/11 11:28:01 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:49:48 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_config
 	char	*ea;
 	char	*f_rgb;
 	char	*c_rgb;
+	int		f_int[3];
+	int		c_int[3];
 	char	**map;
 	char	**file;
 	int		data_saved;
@@ -42,9 +44,10 @@ typedef struct s_cube
 	t_config	*config;
 	t_ray		*ray;
 	mlx_t		*mlx;
-}
+}			t_cube;
 
 # define VALID_CHARS	"NOWS01\n\t "
+# define VALID_NEIGHBORS "NOWS01"
 # define FOV 60.0
 # define PI 3.14159265
 # define WIDTH 1600
@@ -53,6 +56,8 @@ typedef struct s_cube
 /*PARSE*/
 void	check_extension(char *str);
 void	read_map_file(char *filename, t_config *config);
+void	ft_parse_map(t_config *config, char **map);
+void	validate_rgb(t_config *config, char *color, int *values);
 /*UTILS*/
 char	*space_skip_save(char *str);
 void	save_data(t_config *config);
@@ -67,7 +72,6 @@ void	print_error(char *str, t_config *config);
 /*FREE*/
 void	free_matrix(char **str);
 void	free_config(t_config *config);
-void	validate_rgb(char *str, t_config *config, char **rgb_dest);
 
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:49:56 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/06 16:04:09 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:53:18 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_config	config;
-	int			i;
 
 	ft_bzero(&config, sizeof(config));
 	if (argc != 2)
@@ -25,21 +24,10 @@ int	main(int argc, char **argv)
 	}
 	check_extension(argv[1]);
 	read_map_file(argv[1], &config);
-	i = 0;
-	// while (config.file[i])
-	// {
-	// 	ft_printf("%s\n", config.file[i]);
-	// 	i++;
-	// }
 	save_data(&config);
-	// printf("NO: %s\nSO: %s\nWE: %s\nEA: %s\nF: %s\nC: %s\n", config.no, config.so, config.we, config.ea, config.f_rgb, config.c_rgb);
-	// printf("Data saved: %d\n", config.data_saved);
-	i = 0;
-	while (config.map[i])
-	{
-		ft_printf("%s", config.map[i]);
-		i++;
-	}
+	ft_parse_map(&config, config.map);
+	validate_rgb(&config, config.c_rgb, config.c_int);
+	validate_rgb(&config, config.f_rgb, config.f_int);
 	free_config(&config);
 	return (0);
 }
