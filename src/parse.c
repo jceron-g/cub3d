@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:40:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/11 14:50:02 by malena-b         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:36:55 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	check_extension(char *str)
 	len = ft_strlen(str);
 	if (len <= 4)
 	{
-		ft_printf("Error: name map invalid\n");
+		ft_printf("Error: Name map invalid\n");
 		exit(1);
 	}
 	aux = ft_substr(str, len - 4, len);
 	if (ft_strncmp(aux, ".cub", 4) != 0)
 	{
 		free(aux);
-		ft_printf("Error: extension invalid\n");
+		ft_printf("Error: Extension invalid\n");
 		exit(1);
 	}
 	free(aux);
