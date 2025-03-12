@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/11 14:49:48 by malena-b         ###   ########.fr       */
+/*   Updated: 2025/03/12 10:52:13 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,13 @@ typedef struct s_ray
 {
 	double	angle;
 	double	cos;
-	double	sin;	
+	double	sin;
+	double	side_x; //Distancia hasta el primer borde de celda en cada eje.
+	double	side_y;
+	double	delta_x; //Distancia para cruzar una celda en cada eje.
+	double	delta_y;
+	int		step_x; //Dirección en la que avanza el rayo (izquierda/derecha, arriba/abajo).
+	int		step_y;	
 }			t_ray;
 
 typedef struct s_cube

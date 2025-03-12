@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 14:39:19 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/11 17:30:29 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:44:23 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,17 @@ int	check_neighbors(int pos_i, int pos_j, char **map)
 		{
 			if (pos_i == 0 || pos_j == 0)
 				return (0);
-			if (!ft_strchr(VALID_NEIGHBORS, map[pos_i - 1][pos_j]))
+			if (!(map[pos_i - 1]) || !(map[pos_i - 1][pos_j]) ||
+				!ft_strchr(VALID_NEIGHBORS, map[pos_i - 1][pos_j]))
 				return (0);
-			if (!ft_strchr(VALID_NEIGHBORS, map[pos_i + 1][pos_j]))
+			if (!(map[pos_i + 1]) || !(map[pos_i + 1][pos_j]) ||
+				!ft_strchr(VALID_NEIGHBORS, map[pos_i + 1][pos_j]))
 				return (0);
-			if (!ft_strchr(VALID_NEIGHBORS, map[pos_i][pos_j - 1]))
+			if (!(map[pos_i][pos_j - 1]) ||
+				!ft_strchr(VALID_NEIGHBORS, map[pos_i][pos_j - 1]))
 				return (0);
-			if (!ft_strchr(VALID_NEIGHBORS, map[pos_i][pos_j + 1]))
+			if (!(map[pos_i][pos_j + 1]) ||
+				!ft_strchr(VALID_NEIGHBORS, map[pos_i][pos_j + 1]))
 				return (0);
 		}
 	}
@@ -69,43 +73,28 @@ void	ft_parse_map(t_config *config, char **map)
 	int	player_count;
 
 	i = -1;
-	j = 0;
 	player_count = 0;
 	while (map[++i])
 	{
+		j = 0;
 		while (map[i][j])
 		{
 			if (!ft_strchr(VALID_CHARS, map[i][j]))
-			{
 				print_error("Invalid char in map", config);
-				return ;
-			}
-			if (ft_strchr("NSWE", map[i][j]))
-			{
-				player_count++;
-				if (player_count > 1)
-				{
-					print_error("Error: More than one player detected\n", config);
-					return ;
-				}
-			}
-			if (check_neighbors(i, j, map))
-				j++;
-			else
+			if (ft_strchr("NSWE", map[i][j]) && ++player_count > 1)
+				print_error("Error: More than one player detected\n", config);
+			if (!check_neighbors(i, j, map))
 			{
 				ft_printf("Error: Found in i= %d j= %d a ", i, j);
 				print_error("char in a not valid position\n", config);
-				return ;
 			}
+			j++;
 		}
-		j = 0;
 	}
-	if (player_count == 0)
-	{
-		print_error("Error: No player found in map\n", config);
-		return ;
-	}
+	if (player_count != 1)
+		print_error("Error: Invalid number of players\n", config);
 }
+
 
 void	validate_rgb(t_config *config, char *color, int *values)
 {
