@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/13 14:36:01 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:10:48 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
+# include <math.h>
+
+# define VALID_CHARS	"NOWS01\n\t "
+# define VALID_NEIGHBORS "NOWS01"
+# define FOV 60.0
+# define PI 3.14159265
+# define WIDTH 1600
+# define HEIGHT 900
 
 typedef struct s_config
 {
@@ -48,6 +56,8 @@ typedef struct s_ray
 	double	side_y;
 	double	delta_x; //Distancia para cruzar una celda en cada eje.
 	double	delta_y;
+	int		map_x;
+	int 	map_y;
 	int		step_x; //Dirección en la que avanza el rayo (izquierda/derecha, arriba/abajo).
 	int		step_y;	
 }			t_ray;
@@ -60,24 +70,19 @@ typedef struct s_cube
 	mlx_t		*mlx;
 }			t_cube;
 
-# define VALID_CHARS	"NOWS01\n\t "
-# define VALID_NEIGHBORS "NOWS01"
-# define FOV 60.0
-# define PI 3.14159265
-# define WIDTH 1600
-# define HEIGHT 900
 
 /*INIT*/
 t_cube		*init_cube(void);
 t_ray		*init_ray(void);
 t_player	*init_player(void);
 t_ray		*init_ray(void);
-
 /*PARSE*/
 void	check_extension(char *str);
 void	read_map_file(char *filename, t_config *config);
 void	ft_parse_map(t_cube *cube, char **map);
 void	validate_rgb(t_config *config, char *color, int *values);
+/*RAYCASTING*/
+void	ray_steps(t_ray *ray, t_player *player);
 /*UTILS*/
 char	*space_skip_save(char *str);
 void	save_data(t_config *config);

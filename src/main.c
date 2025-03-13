@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:49:56 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/13 14:39:30 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:11:12 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	ft_parse_map(cube, cube->config->map);
 	validate_rgb(cube->config, cube->config->c_rgb, cube->config->c_int);
 	validate_rgb(cube->config, cube->config->f_rgb, cube->config->f_int);
+	ray_steps(cube->ray, cube->player);
 	free_config(cube->config);
 	return (0);
 }
