@@ -6,7 +6,7 @@
 #    By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 17:06:26 by jceron-g          #+#    #+#              #
-#    Updated: 2025/03/11 16:36:05 by jceron-g         ###   ########.fr        #
+#    Updated: 2025/03/13 14:43:52 by jceron-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ BLUE      = \033[34;1m
 CYAN      = \033[37;1m
 RED		  = \033[31;1m
 
-SRC_FILES = main parse utils map auxiliar_functions free
+SRC_FILES = main parse utils map auxiliar_functions free init
 SRC_FILES_BONUS = 
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

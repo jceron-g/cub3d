@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/12 10:52:13 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/13 14:36:01 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ typedef struct s_config
 	int		error;
 }			t_config;
 
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	int		player_count;
+}				t_player;
+
 typedef struct s_ray
 {
 	double	angle;
@@ -49,6 +56,7 @@ typedef struct s_cube
 {
 	t_config	*config;
 	t_ray		*ray;
+	t_player	*player;
 	mlx_t		*mlx;
 }			t_cube;
 
@@ -59,10 +67,16 @@ typedef struct s_cube
 # define WIDTH 1600
 # define HEIGHT 900
 
+/*INIT*/
+t_cube		*init_cube(void);
+t_ray		*init_ray(void);
+t_player	*init_player(void);
+t_ray		*init_ray(void);
+
 /*PARSE*/
 void	check_extension(char *str);
 void	read_map_file(char *filename, t_config *config);
-void	ft_parse_map(t_config *config, char **map);
+void	ft_parse_map(t_cube *cube, char **map);
 void	validate_rgb(t_config *config, char *color, int *values);
 /*UTILS*/
 char	*space_skip_save(char *str);
