@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/13 16:10:48 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/14 11:35:52 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ typedef struct s_ray
 	double	angle;
 	double	cos;
 	double	sin;
-	double	side_x; //Distancia hasta el primer borde de celda en cada eje.
+	double	side_x; 	//Distancia hasta el primer borde de celda en cada eje.
 	double	side_y;
-	double	delta_x; //Distancia para cruzar una celda en cada eje.
+	double	delta_x; 	//Distancia para cruzar una celda en cada eje.
 	double	delta_y;
+	double	distance; 	//Variable implementada para corregir el ojo de pez que pudiera ocasionarse
+	int		side; 		//Indica si hemos chocado con una pared en x o y
 	int		map_x;
 	int 	map_y;
-	int		step_x; //Dirección en la que avanza el rayo (izquierda/derecha, arriba/abajo).
+	int		step_x; 	//Dirección en la que avanza el rayo (izquierda/derecha, arriba/abajo).
 	int		step_y;	
 }			t_ray;
 
@@ -77,26 +79,26 @@ t_ray		*init_ray(void);
 t_player	*init_player(void);
 t_ray		*init_ray(void);
 /*PARSE*/
-void	check_extension(char *str);
-void	read_map_file(char *filename, t_config *config);
-void	ft_parse_map(t_cube *cube, char **map);
-void	validate_rgb(t_config *config, char *color, int *values);
+void		check_extension(char *str);
+void		read_map_file(char *filename, t_config *config);
+void		ft_parse_map(t_cube *cube, char **map);
+void		validate_rgb(t_config *config, char *color, int *values);
 /*RAYCASTING*/
-void	ray_steps(t_ray *ray, t_player *player);
+void		ray_steps(t_ray *ray, t_player *player);
+void		did_it_hit(t_ray *ray, t_config *config);
 /*UTILS*/
-char	*space_skip_save(char *str);
-void	save_data(t_config *config);
-void	save_routes(char **coord, char *route, t_config *config);
-int		check_data(t_config *config);
+char		*space_skip_save(char *str);
+void		save_data(t_config *config);
+void		save_routes(char **coord, char *route, t_config *config);
+int			check_data(t_config *config);
 /*AUXILIAR FUNCTIONS*/
-int		ft_isspace(char c);
-int		ft_strempty(char *str);
-void	save_map(int i, t_config *config, char **file);
-int		ft_check_digit(char *str);
-void	print_error(char *str, t_config *config);
+int			ft_isspace(char c);
+int			ft_strempty(char *str);
+void		save_map(int i, t_config *config, char **file);
+int			ft_check_digit(char *str);
+void		print_error(char *str, t_config *config);
 /*FREE*/
-void	free_matrix(char **str);
-void	free_config(t_config *config);
-
+void		free_matrix(char **str);
+void		free_config(t_config *config);
 
 #endif
