@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:49:56 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/14 13:42:50 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:52:28 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	validate_rgb(cube->config, cube->config->c_rgb, cube->config->c_int);
 	validate_rgb(cube->config, cube->config->f_rgb, cube->config->f_int);
 	ray_steps(cube->ray, cube->player);
-	cube->config->map_view = set_player_view(cube);
+	set_player_view(cube);
 	printf("The value of pi is: %f\n", cube->config->map_view);
 	free_config(cube->config);
 	return (0);

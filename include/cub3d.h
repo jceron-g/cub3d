@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/14 13:45:09 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:52:56 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char		*space_skip_save(char *str);
 void		save_data(t_config *config);
 void		save_routes(char **coord, char *route, t_config *config);
 int			check_data(t_config *config);
-double		set_player_view(t_cube *cube);
+void		set_player_view(t_cube *cube);
 /*AUXILIAR FUNCTIONS*/
 int			ft_isspace(char c);
 int			ft_strempty(char *str);
