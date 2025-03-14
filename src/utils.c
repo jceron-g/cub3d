@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:47:37 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/11 14:49:22 by malena-b         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:36:38 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,16 @@ int	check_data(t_config *config)
 	else if (!config->f_rgb)
 		return (0);
 	return (1);
+}
+
+double	set_player_view(t_cube *cube)
+{
+	if(cube->player->player_view == 'N')
+		return (PI/2);
+	else if(cube->player->player_view == 'E')
+		return (0);
+	else if (cube->player->player_view == 'W')
+		return (PI);
+	else
+		return((3*PI)/2);
 }

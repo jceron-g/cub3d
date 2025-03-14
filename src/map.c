@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 14:39:19 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/13 14:52:16 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:57:50 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ int	check_neighbors(int pos_i, int pos_j, char **map)
 	return (1);
 }
 
-void	check_player(int x, int y, t_cube *cube)
+void	check_player(char coordinate, int x, int y, t_cube *cube)
 {
+	cube->player->player_view = coordinate;
 	cube->player->pos_x = x + 0.5; //Se pone el 0.5 extra para empezar justo en el medio del cuadrado
 	cube->player->pos_y = y + 0.5;
 	cube->player->player_count++;
@@ -87,7 +88,7 @@ void	ft_parse_map(t_cube *cube, char **map)
 			if (!ft_strchr(VALID_CHARS, map[i][j]))
 				print_error("Error: Invalid char in map", cube->config);
 			if (ft_strchr("NSWE", map[i][j]))
-				check_player(j, i, cube);
+				check_player(map[i][j], j, i, cube);
 			if (!check_neighbors(i, j, map))
 			{
 				ft_printf("Error: Found in i= %d j= %d a ", i, j);
@@ -95,7 +96,7 @@ void	ft_parse_map(t_cube *cube, char **map)
 			}
 		}
 	}
-	printf("Player count: %d is in position x = %f y = %f\n", cube->player->player_count, cube->player->pos_x, cube->player->pos_y);
+	printf("Player count: %d is in position x = %f y = %f and the letter is %f\n",cube->player->player_count, cube->player->pos_x, cube->player->pos_y, cube->player->player_view);
 	if (cube->player->player_count != 1)
 		print_error("Error: Invalid number of players\n", cube->config);
 }

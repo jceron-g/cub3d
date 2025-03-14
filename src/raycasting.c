@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:35:52 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/14 11:36:16 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:51:12 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,20 @@ void	ray_steps(t_ray *ray, t_player *player)
 	}
 }
 
-void	ft_dda(t_ray *ray, t_cube *cube, int i)
-{
-	ray->map_x = (int)cube->player->pos_x;
-	ray->map_y = (int)cube->player->pos_y;
-	ray->delta_x = fabs(1 / ray->cos);
-	ray->delta_y = fabs(1 / ray->sin);
-	ray_steps(ray, cube->player);
-	did_it_hit(ray, cube->config);
-	// Corrección del ojo de pez
-	if (ray->side == 0)
-		ray->distance = (ray->side_x - ray->delta_x);
-	else
-		ray->distance = (ray->side_y - ray->delta_y);
-}
+// void	ft_dda(t_ray *ray, t_cube *cube, int i)
+// {
+// 	ray->map_x = (int)cube->player->pos_x;
+// 	ray->map_y = (int)cube->player->pos_y;
+// 	ray->delta_x = fabs(1 / ray->cos);
+// 	ray->delta_y = fabs(1 / ray->sin);
+// 	ray_steps(ray, cube->player);
+// 	did_it_hit(ray, cube->config);
+// 	// Corrección del ojo de pez
+// 	if (ray->side == 0)
+// 		ray->distance = (ray->side_x - ray->delta_x);
+// 	else
+// 		ray->distance = (ray->side_y - ray->delta_y);
+// }
 
 
 // void ft_raycaster(t_cube *cube)

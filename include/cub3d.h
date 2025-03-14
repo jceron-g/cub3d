@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/14 11:35:52 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:45:09 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include "libft/libft.h"
 # include <math.h>
 
-# define VALID_CHARS	"NOWS01\n\t "
-# define VALID_NEIGHBORS "NOWS01"
+# define VALID_CHARS	"NEWS01\n\t "
+# define VALID_NEIGHBORS "NEWS01"
 # define FOV 60.0
-# define PI 3.14159265
+# define PI 3.14159265359
 # define WIDTH 1600
 # define HEIGHT 900
 
@@ -38,12 +38,14 @@ typedef struct s_config
 	char	**file;
 	int		data_saved;
 	int		error;
+	double	map_view;
 }			t_config;
 
 typedef struct s_player
 {
 	double	pos_x;
 	double	pos_y;
+	double	player_view;
 	int		player_count;
 }				t_player;
 
@@ -91,6 +93,7 @@ char		*space_skip_save(char *str);
 void		save_data(t_config *config);
 void		save_routes(char **coord, char *route, t_config *config);
 int			check_data(t_config *config);
+double		set_player_view(t_cube *cube);
 /*AUXILIAR FUNCTIONS*/
 int			ft_isspace(char c);
 int			ft_strempty(char *str);
