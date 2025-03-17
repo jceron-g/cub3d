@@ -33,7 +33,7 @@ BLUE      = \033[34;1m
 CYAN      = \033[37;1m
 RED		  = \033[31;1m
 
-SRC_FILES = auxiliar_functions free init main map parse raycasting utils
+SRC_FILES = auxiliar_functions free init main map parse raycasting utils init_mlx
 SRC_FILES_BONUS = 
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

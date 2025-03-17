@@ -56,13 +56,13 @@ void	free_mlx(t_cube *cube)
 	if (cube->ea_wall)
 		mlx_delete_texture(cube->ea_wall);
 	if (cube->no_wall_i)
-		mlx_delete_image(cube->no_wall_i);
+		mlx_delete_image(cube->mlx, cube->no_wall_i);
 	if (cube->so_wall_i)
-		mlx_delete_image(cube->so_wall_i);
+		mlx_delete_image(cube->mlx, cube->so_wall_i);
 	if (cube->we_wall_i)
-		mlx_delete_image(cube->we_wall_i);
+		mlx_delete_image(cube->mlx, cube->we_wall_i);
 	if (cube->ea_wall_i)
-		mlx_delete_image(cube->ea_wall_i);
+		mlx_delete_image(cube->mlx, cube->ea_wall_i);
 	if (cube->mlx)
 		mlx_terminate(cube->mlx);
 }
