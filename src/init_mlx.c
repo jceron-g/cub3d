@@ -27,7 +27,7 @@ int load_texture(t_cube *cube)
 int    init_mlx(t_cube *cube)
 {
     cube->mlx = mlx_init(WIDTH, HEIGHT, "Window", true);
-    if (load_texture(cube) == 0)
+    if (!cube->mlx || load_texture(cube) == 0)
 		return (0);
 	return (1);
 }
