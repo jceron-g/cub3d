@@ -72,6 +72,14 @@ typedef struct s_cube
 	t_ray		*ray;
 	t_player	*player;
 	mlx_t		*mlx;
+	mlx_image_t	*no_wall_i;
+	mlx_image_t	*so_wall_i;
+	mlx_image_t	*we_wall_i;
+	mlx_image_t	*ea_wall_i;
+	mlx_texture_t	*no_wall;
+	mlx_texture_t	*so_wall;
+	mlx_texture_t	*we_wall;
+	mlx_texture_t	*ea_wall;
 }			t_cube;
 
 
@@ -80,6 +88,8 @@ t_cube		*init_cube(void);
 t_ray		*init_ray(void);
 t_player	*init_player(void);
 t_ray		*init_ray(void);
+/*INIT_MLX*/
+int		init_mlx(t_cube *cube);
 /*PARSE*/
 void		check_extension(char *str);
 void		read_map_file(char *filename, t_config *config);
@@ -103,5 +113,6 @@ void		print_error(char *str, t_config *config);
 /*FREE*/
 void		free_matrix(char **str);
 void		free_config(t_config *config);
+void		free_mlx(t_cube *cube);
 
 #endif
