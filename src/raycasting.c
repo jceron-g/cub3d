@@ -6,18 +6,16 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:35:52 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/14 12:51:12 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:33:24 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/cub3d.h"
-
 
 void	did_it_hit(t_ray *ray, t_config *config)
 {
-	int hit;
-	
+	int	hit;
+
 	hit = 0;
 	while (!hit)
 	{
@@ -66,25 +64,38 @@ void	ray_steps(t_ray *ray, t_player *player)
 	}
 }
 
-// void	ft_dda(t_ray *ray, t_cube *cube, int i)
-// {
-// 	ray->map_x = (int)cube->player->pos_x;
-// 	ray->map_y = (int)cube->player->pos_y;
-// 	ray->delta_x = fabs(1 / ray->cos);
-// 	ray->delta_y = fabs(1 / ray->sin);
-// 	ray_steps(ray, cube->player);
-// 	did_it_hit(ray, cube->config);
-// 	// Corrección del ojo de pez
-// 	if (ray->side == 0)
-// 		ray->distance = (ray->side_x - ray->delta_x);
-// 	else
-// 		ray->distance = (ray->side_y - ray->delta_y);
-// }
+void	ft_dda(t_ray *ray, t_cube *cube, int i)
+{
+	(void)i;
+	ray->map_x = (int)cube->player->pos_x;
+	ray->map_y = (int)cube->player->pos_y;
+	ray->delta_x = fabs(1 / ray->cos);
+	ray->delta_y = fabs(1 / ray->sin);
+	ray_steps(ray, cube->player);
+	did_it_hit(ray, cube->config);
+	// Corrección del ojo de pez
+	if (ray->side == 0)
+		ray->distance = (ray->side_x - ray->delta_x);
+	else
+		ray->distance = (ray->side_y - ray->delta_y);
+}
 
+void	ft_raycaster(t_cube *cube)
+{
+	int		i;
+	double	angle;
+	double	start;
 
-// void ft_raycaster(t_cube *cube)
-// {
-//     double angle;
-    
-//     angle = (FOV/WIDTH) * PI / 180; //Esto seria el angulo del primer rayo que sale pasado a radianes
-// } 
+	i = 0;
+	angle = (FOV / WIDTH) * PI / 180;
+	start = cube->player->player_view - (angle * (WIDTH / 2));
+	while (i < WIDTH)
+	{
+		cube->ray[i].angle = start + (angle * i);
+		cube->ray[i].cos = cos(cube->ray[i].angle);
+		cube->ray[i].sin = sin(cube->ray[i].angle);
+		ft_dda(cube->ray, cube, i);
+		i++;
+	}
+}
+

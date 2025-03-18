@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:33:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/13 14:51:05 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:38:37 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ t_ray	*init_ray(void)
 {
 	t_ray *ray;
 
-	ray = (t_ray *)malloc(sizeof(t_ray));
+	ray = (t_ray *)malloc(sizeof(t_ray) * WIDTH); // ✅ Reservar un array
 	if (!ray)
 		return (NULL);
-	ft_bzero(ray, sizeof(t_ray));
+	ft_bzero(ray, sizeof(t_ray) * WIDTH);
 	return (ray);
 }
+
 
 
 t_cube	*init_cube(void)

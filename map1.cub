@@ -1,11 +1,11 @@
 
-NO             rutaa
-SO rutab
-WE rutac
-EA rutad
+NO Textures/wall_1.png
+SO Textures/wall_2.png
+WE Textures/wall_3.png
+EA Textures/wall_4.png
 
 F 255,205,0
-C        0,255,255
+C 0,255,255
 111
 101
 111

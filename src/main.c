@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:49:56 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/14 13:52:28 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:47:01 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_cube		*cube;
-
 	cube = init_cube();
-
 	if (argc != 2)
 	{
 		ft_printf("Error: Incorrect arguments\n");
@@ -29,9 +27,9 @@ int	main(int argc, char **argv)
 	ft_parse_map(cube, cube->config->map);
 	validate_rgb(cube->config, cube->config->c_rgb, cube->config->c_int);
 	validate_rgb(cube->config, cube->config->f_rgb, cube->config->f_int);
-	ray_steps(cube->ray, cube->player);
 	set_player_view(cube);
-	printf("The value of pi is: %f\n", cube->config->map_view);
+	ft_raycaster(cube);
+	init_mlx(cube);
 	free_config(cube->config);
 	return (0);
 }

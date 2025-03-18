@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/14 13:52:56 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:29:12 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_cube
 	mlx_texture_t	*so_wall;
 	mlx_texture_t	*we_wall;
 	mlx_texture_t	*ea_wall;
+	mlx_image_t		*img;
 }			t_cube;
 
 
@@ -89,7 +90,7 @@ t_ray		*init_ray(void);
 t_player	*init_player(void);
 t_ray		*init_ray(void);
 /*INIT_MLX*/
-int		init_mlx(t_cube *cube);
+void			init_mlx(t_cube *cube);
 /*PARSE*/
 void		check_extension(char *str);
 void		read_map_file(char *filename, t_config *config);
@@ -98,6 +99,8 @@ void		validate_rgb(t_config *config, char *color, int *values);
 /*RAYCASTING*/
 void		ray_steps(t_ray *ray, t_player *player);
 void		did_it_hit(t_ray *ray, t_config *config);
+void		ft_dda(t_ray *ray, t_cube *cube, int i);
+void		ft_raycaster(t_cube *cube);
 /*UTILS*/
 char		*space_skip_save(char *str);
 void		save_data(t_config *config);
