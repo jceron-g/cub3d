@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/18 15:29:12 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:00:23 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_ray		*init_ray(void);
 t_player	*init_player(void);
 t_ray		*init_ray(void);
 /*INIT_MLX*/
-void			init_mlx(t_cube *cube);
+int			init_mlx(t_cube *cube);
 /*PARSE*/
 void		check_extension(char *str);
 void		read_map_file(char *filename, t_config *config);

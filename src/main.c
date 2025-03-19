@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:49:56 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/18 15:47:01 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:31:53 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	set_player_view(cube);
 	ft_raycaster(cube);
 	init_mlx(cube);
+	mlx_loop(cube->mlx);
 	free_config(cube->config);
 	return (0);
 }

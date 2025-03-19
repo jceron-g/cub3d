@@ -5,107 +5,133 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 12:19:51 by jceron-g          #+#    #+#             */
-/*   Updated: 2024/01/15 11:33:14 by jceron-g         ###   ########.fr       */
+/*   Created: 2023/10/11 11:28:15 by malena-b          #+#    #+#             */
+/*   Updated: 2025/03/19 12:30:33 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_read_line(int fd, char *aux_line)
+char	*read_and_save(int fd, char *pre_read)
 {
-	char	*buffer;
-	char	*save_aux;
-	int		read_bytes;
+	char		*buffer;
+	char		*aux;
+	int			bytes_readed;
 
-	buffer = ft_calloc_gnl((BUFFER_SIZE + 1), sizeof(char));
+	buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!buffer)
 		return (NULL);
-	read_bytes = 1;
-	while (!ft_strchr_gnl(buffer, '\n') && read_bytes > 0)
+	bytes_readed = 1;
+	while (!ft_strchr(buffer, '\n') && bytes_readed > 0)
 	{
-		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		if (read_bytes == -1)
+		bytes_readed = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_readed == -1)
 		{
-			free(aux_line);
-			aux_line = NULL;
+			free(pre_read);
 			return (NULL);
 		}
-		save_aux = aux_line;
-		aux_line = ft_strjoin_gnl(save_aux, buffer, read_bytes);
+		aux = pre_read;
+		pre_read = ft_strjoin_gnl(aux, buffer, bytes_readed);
 	}
-	free(buffer);
-	if (ft_strlen_gnl(aux_line) == 0)
-		return (free(aux_line), NULL);
-	return (aux_line);
+	free (buffer);
+	if (ft_strlen_gnl(pre_read) == 0)
+		return (free(pre_read), NULL);
+	return (pre_read);
 }
 
-char	*ft_get_line(char *aux_line)
+char	*get_new_line(char	*pre_read)
 {
 	int		i;
 	int		j;
-	char	*get_line;
+	char	*new_line;
 
 	i = 0;
-	while (aux_line[i] != '\0' && aux_line[i] != '\n')
+	while (pre_read[i] && pre_read[i] != '\n')
 		i++;
-	get_line = ft_calloc_gnl((i + 1 + (aux_line[i] == '\n')), sizeof(char));
-	if (!get_line)
-		return (NULL);
+	new_line = malloc((i + 1 + (pre_read[i] == '\n')) * sizeof(char));
+	if (!new_line)
+		exit (0);
 	j = 0;
-	while (aux_line[j] != '\0' && aux_line[j] != '\n')
+	while (j < i)
 	{
-		get_line[j] = aux_line[j];
+		new_line[j] = pre_read[j];
 		j++;
 	}
-	if (aux_line[j] == '\n')
-		get_line[j++] = '\n';
-	get_line[j] = '\0';
-	return (get_line);
+	new_line[j] = '\0';
+	return (new_line);
 }
 
-char	*ft_clean_line(char *aux_line)
+void	copy_read(char *pre_read, char *copy, int j, int len)
+{
+	int	i;
+
+	i = 0;
+	while (j < len)
+	{
+		copy[i] = pre_read[j];
+		i++;
+		j++;
+	}
+}
+
+char	*clean_pre_read(char	*pre_read)
 {
 	int		i;
 	int		j;
-	char	*new_aux_line;
+	char	*new_pre_read;
 
 	i = 0;
-	while (aux_line[i] != '\0' && aux_line[i] != '\n')
+	while (pre_read[i] && pre_read[i] != '\n')
 		i++;
-	if (ft_strlen_gnl(aux_line) - i <= 0)
+	if (!pre_read)
+		return (free(pre_read), NULL);
+	j = i;
+	while (pre_read[j])
+		j++;
+	if (j - i <= 0)
 	{
-		free(aux_line);
-		aux_line = NULL;
+		free(pre_read);
 		return (NULL);
 	}
-	new_aux_line = ft_calloc_gnl(ft_strlen_gnl(aux_line) - i + 1, sizeof(char));
-	if (!new_aux_line)
+	new_pre_read = ft_calloc((j - i), sizeof(char));
+	if (!new_pre_read)
 		return (NULL);
-	i++;
-	j = 0;
-	while (aux_line[i] != '\0')
-		new_aux_line[j++] = aux_line[i++];
-	free(aux_line);
-	aux_line = NULL;
-	return (new_aux_line);
+	j = i + 1;
+	copy_read(pre_read, new_pre_read, j, ft_strlen(pre_read));
+	free (pre_read);
+	return (new_pre_read);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*aux_line;
-	char		*final_line;
+	static char	*pre_read;
+	char		*new_line;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 	{
-		free(aux_line);
-		aux_line = NULL;
+		free(pre_read);
+		pre_read = NULL;
 		return (NULL);
 	}
-	aux_line = ft_read_line(fd, aux_line);
-	if (!aux_line)
+	pre_read = read_and_save(fd, pre_read);
+	if (!pre_read)
 		return (NULL);
-	final_line = ft_get_line(aux_line);
-	aux_line = ft_clean_line(aux_line);
-	return (final_line);
+	new_line = get_new_line(pre_read);
+	pre_read = clean_pre_read(pre_read);
+	return (new_line);
 }
+/* La función lo que hace es devolver la siguiente linea del fd dado como 
+parámetro leyendo cada vez una cantidad de caracteres BUFFER_SIZE hasta que 
+se encuentre el final de linea o del archivo.
+Para ello, lo primero que hace es comprobar si en la variable pre_read que, 
+al ser estática puede ya tener un valor de una llamada previa, hay algún 
+salto de linea usando ft_strchr.
+Si lo hay, no volver a usar read, si no que creamos nuestra linea a imprimir
+desde el inicio de pre_read hasta el primer salto de linea que encontremos.
+Tras imprimirla modificar el buffer para eliminar la linea ya impresa por 
+pantalla.
+En el caso de que al comprobar el buffer no haya ningún salto de linea,
+concatenar el buffer ya existente con el resultado de hacer un nuevo read al fd
+y volver a imprimir por pantalla el buffer desde el inicio hasta el siguiente
+salto de linea con su consecuente eliminación de los caracteres impresos del
+buffer por pantalla*/

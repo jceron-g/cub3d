@@ -5,30 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 12:20:52 by jceron-g          #+#    #+#             */
-/*   Updated: 2024/01/15 11:35:08 by jceron-g         ###   ########.fr       */
+/*   Created: 2023/10/19 13:46:07 by malena-b          #+#    #+#             */
+/*   Updated: 2025/03/19 12:30:30 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strchr_gnl(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if ((char)c == '\0')
-		return ((char *)&s[i]);
-	return (0);
-}
 
 int	ft_strlen_gnl(char *str)
 {
@@ -37,49 +19,30 @@ int	ft_strlen_gnl(char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strjoin_gnl(char *aux_line, char *buffer, int read_bytes)
+char	*ft_strjoin_gnl(char *pre_read, char *buffer, int bytes_readed)
 {
 	char	*str;
 	int		i;
 	int		j;
 
-	if (!aux_line)
-		aux_line = ft_calloc_gnl(1, 1);
-	str = malloc((ft_strlen_gnl(aux_line) + read_bytes + 1));
-	if (!str)
+	if (!pre_read)
+		pre_read = ft_calloc(1, 1);
+	str = malloc((ft_strlen(pre_read) + ft_strlen(buffer) + 1) * sizeof(char));
+	if (str == NULL)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (aux_line[j])
-		str[i++] = aux_line[j++];
-	j = 0;
-	while (j < read_bytes)
-		str[i++] = buffer[j++];
-	str[i] = '\0';
-	free (aux_line);
+	while (pre_read[i])
+		str[j++] = pre_read[i++];
+	i = 0;
+	while (i < bytes_readed)
+		str[j++] = buffer[i++];
+	str[j] = '\0';
+	free (pre_read);
 	return (str);
-}
-
-void	*ft_calloc_gnl(size_t count, size_t size)
-{
-	void	*ptr;
-	size_t	len;
-	size_t	i;
-
-	i = 0;
-	len = size * count;
-	ptr = malloc(len);
-	if (ptr == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		((unsigned char *)ptr)[i] = '\0';
-		i++;
-	}
-	return (ptr);
 }

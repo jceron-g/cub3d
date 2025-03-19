@@ -10,19 +10,22 @@ void	initialize_textures(t_cube *cube)
 
 int	load_texture(t_cube *cube)
 {
-    printf("Texture is: %s", cube->config->no);
+	mlx_texture_t	*north;
+	mlx_texture_t	*south;
+	mlx_texture_t	*west;
+	mlx_texture_t	*east;
+
 	initialize_textures(cube);
-	cube->no_wall = mlx_load_png(cube->config->no);
-	cube->so_wall = mlx_load_png(cube->config->so);
-	cube->we_wall = mlx_load_png(cube->config->we);
-	cube->ea_wall = mlx_load_png(cube->config->ea);
-	if (!cube->no_wall_i || !cube->so_wall_i || !cube->we_wall_i
-		|| !cube->ea_wall_i)
+	north = mlx_load_png(cube->config->no);
+	south = mlx_load_png(cube->config->so);
+	west = mlx_load_png(cube->config->we);
+	east = mlx_load_png(cube->config->ea);
+	if (!north|| !south|| !west	|| !east)
 		return (0);
-	cube->no_wall_i = mlx_texture_to_image(cube->mlx, cube->no_wall);
+/* 	cube->no_wall_i = mlx_texture_to_image(cube->mlx, cube->no_wall);
 	cube->so_wall_i = mlx_texture_to_image(cube->mlx, cube->so_wall);
 	cube->we_wall_i = mlx_texture_to_image(cube->mlx, cube->we_wall);
-	cube->ea_wall_i = mlx_texture_to_image(cube->mlx, cube->ea_wall);
+	cube->ea_wall_i = mlx_texture_to_image(cube->mlx, cube->ea_wall); */
 	return (1);
 }
 

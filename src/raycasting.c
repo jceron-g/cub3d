@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:35:52 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/18 15:33:24 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:38:46 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_raycaster(t_cube *cube)
 
 	i = 0;
 	angle = (FOV / WIDTH) * PI / 180;
-	start = cube->player->player_view - (angle * (WIDTH / 2));
+	start = cube->config->map_view - (angle * (WIDTH / 2));
 	while (i < WIDTH)
 	{
 		cube->ray[i].angle = start + (angle * i);
