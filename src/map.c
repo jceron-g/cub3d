@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 14:39:19 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/18 12:09:42 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:00:13 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_neighbors(int pos_i, int pos_j, char **map)
 void	check_player(char coordinate, int x, int y, t_cube *cube)
 {
 	cube->player->player_view = coordinate;
-	cube->player->pos_x = x + 0.5; //Se pone el 0.5 extra para empezar justo en el medio del cuadrado
+	cube->player->pos_x = x + 0.5;
 	cube->player->pos_y = y + 0.5;
 	cube->player->player_count++;
 }

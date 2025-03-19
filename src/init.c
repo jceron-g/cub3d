@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:33:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/19 12:36:42 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:20:37 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_cube	*init_cube(void)
 	cube->config = init_config();
 	cube->player = init_player();
 	cube->ray = init_ray();
+	cube->img = NULL;
 	if (!cube->config || !cube->player || !cube->ray)
 	{
 		free_config(cube->config);
