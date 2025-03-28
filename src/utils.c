@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:47:37 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/14 13:55:04 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/28 13:49:18 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int	check_data(t_config *config)
 
 void	set_player_view(t_cube *cube)
 {
-	if(cube->player->player_view == 'N')
+	if(cube->player->player_view == 'S')
 		cube->config->map_view = (PI/2);
 	else if(cube->player->player_view == 'E')
-		cube->config->map_view = (0);
+		cube->config->map_view = (2*PI);
 	else if (cube->player->player_view == 'W')
 		cube->config->map_view = PI;
 	else

@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/19 13:13:54 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/28 12:05:07 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,7 @@ void		free_mlx(t_cube *cube);
 void paint_all(t_cube *game,int x, int y);
 int	rgb(int r, int g, int b, int a);
 
+
+
+void paint_wall_solid(t_cube *cube, int i, double distance_corrected);
 #endif

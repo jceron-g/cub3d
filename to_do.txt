@@ -3,4 +3,4 @@ Asegurarse que una vez acabado el parseo todos los tipos de informacion esten co
 Comprobar que las rutas de las texturas sean validas (Lo hace MLX)
 
 
-INICIAR LAS COORDENADAS A NULL EN LUGAR DE CON BZERO!!!!!!!!!!!
+Las coordenadas estan intercambiadas porque no funcionaban al reves

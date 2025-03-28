@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:35:52 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/19 12:38:46 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/03/28 13:48:32 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,36 @@ void	ft_dda(t_ray *ray, t_cube *cube, int i)
 		ray->distance = (ray->side_y - ray->delta_y);
 }
 
+void	paint_wall_solid(t_cube *cube, int i, double fixed_dist)
+{
+	int	start;
+	int	end;
+	int	y;
+	int	color;
+
+	color = 0x000000;
+	start = HEIGHT / 2 - (HEIGHT / (2 * fixed_dist));
+	end = HEIGHT / 2 + (HEIGHT / (2 * fixed_dist));
+	if (start < 0)
+		start = 0;
+	if (end >= HEIGHT)
+		end = HEIGHT - 1;
+	if (i < 0 || i >= WIDTH)
+		return ;
+	y = start;
+	while (y <= end)
+	{
+		mlx_put_pixel(cube->img, i, y, color);
+		y++;
+	}
+}
+
 void	ft_raycaster(t_cube *cube)
 {
 	int		i;
 	double	angle;
 	double	start;
+	double	fixed_dist;
 
 	i = 0;
 	angle = (FOV / WIDTH) * PI / 180;
@@ -94,8 +119,10 @@ void	ft_raycaster(t_cube *cube)
 		cube->ray[i].angle = start + (angle * i);
 		cube->ray[i].cos = cos(cube->ray[i].angle);
 		cube->ray[i].sin = sin(cube->ray[i].angle);
-		ft_dda(cube->ray, cube, i);
+		ft_dda(&cube->ray[i], cube, i);
+		fixed_dist = cube->ray[i].distance * cos(cube->ray[i].angle
+				- cube->config->map_view);
+		paint_wall_solid(cube, i, fixed_dist);
 		i++;
 	}
 }
-
