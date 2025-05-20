@@ -1,3 +1,5 @@
+#include "../include/cub3d.h"
+
 int	key_press_control(mlx_key_data_t keydata, t_cube *cube)
 {
   t_player  *player;
