@@ -21,6 +21,25 @@ void ft_parse(t_cube *cube, char **argv)
 	validate_rgb(cube->config, cube->config->c_rgb, cube->config->c_int);
 	validate_rgb(cube->config, cube->config->f_rgb, cube->config->f_int);
 }
+
+void	my_keyhook(mlx_key_data_t keydata, void	*param)
+{
+	t_cube	*cube;
+
+	cube = param;
+	key_press_control(keydata, cube);
+	key_release_control(keydata, cube);
+}
+
+void	my_hook(void	*param)
+{
+	t_cube	*cube;
+
+	cube = param;
+	player_movement(cube);
+	//Hay que añadir aquí la parte de renderizado para que se realice en bucle
+}
+
 int	main(int argc, char **argv)
 {
 	t_cube		*cube;
@@ -38,6 +57,8 @@ int	main(int argc, char **argv)
 	mlx_image_to_window(cube->mlx, cube->img, 0, 0);
 	//exit(1);
 	ft_raycaster(cube);
+	mlx_key_hook(cube->mlx, my_keyhook, cube);
+	mlx_loop_hook(cube->mlx, my_hook, cube);
 	mlx_loop(cube->mlx);
 	free_config(cube->config);
 	return (0);

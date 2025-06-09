@@ -23,6 +23,7 @@
 # define PI 3.14159265359
 # define WIDTH 1600
 # define HEIGHT 900
+# define MOVE_SPEED 0
 
 typedef struct s_config
 {
@@ -117,6 +118,12 @@ void		print_error(char *str, t_config *config);
 void		free_matrix(char **str);
 void		free_config(t_config *config);
 void		free_mlx(t_cube *cube);
+/*MOVEMENT*/
+void		player_movement(t_cube *cube);
+void		rotate_player(t_cube *cube, double rotation_dir);
+int			key_press_control(mlx_key_data_t keydata, t_cube *cube);
+int			key_press_control(mlx_key_data_t keydata, t_cube *cube);
+int			key_release_control(mlx_key_data_t keydata, t_cube *cube);
 
 void paint_all(t_cube *game,int x, int y);
 int	rgb(int r, int g, int b, int a);

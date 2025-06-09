@@ -61,6 +61,6 @@ void	player_movement(t_cube *cube)
 		move_left(cube);
 	if (player.move_x == 1)
 		move_right(cube);
-	if (player.rotate != 0)
-		rotate_player(cube, player.rotate);
+	//if (player.rotate != 0)
+		//rotate_player(cube, player.rotate);
 }

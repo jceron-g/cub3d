@@ -14,7 +14,7 @@ void	rotate_in_direction(t_cube *cube, double rot_speed)
 	player->plane_y = aux_x * sin(rot_speed) + player->plane_y * cos(rot_speed);
 }
 
-void	player_rotation(t_cube *cube, double rotation_dir)
+void	rotate_player(t_cube *cube, double rotation_dir)
 {
 	double	rot_speed;
 

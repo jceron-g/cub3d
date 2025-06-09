@@ -25,7 +25,7 @@ int	key_press_control(mlx_key_data_t keydata, t_cube *cube)
 int	key_release_control(mlx_key_data_t keydata, t_cube *cube)
 {
   t_player  *player;
-
+  
   player = cube->player;
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_RELEASE && player.move_y == 1)
 		player.move_y = 0;
