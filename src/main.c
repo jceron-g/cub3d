@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jacer <jacer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:49:56 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/19 13:27:27 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:13:30 by jacer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	my_hook(void	*param)
 
 	cube = param;
 	player_movement(cube);
-	//Hay que añadir aquí la parte de renderizado para que se realice en bucle
+	paint_all(cube, 0, 0);
+	ft_raycaster(cube);
 }
 
 int	main(int argc, char **argv)

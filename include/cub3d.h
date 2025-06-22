@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jacer <jacer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/28 12:05:07 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:34:56 by jacer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # define PI 3.14159265359
 # define WIDTH 1600
 # define HEIGHT 900
-# define MOVE_SPEED 0
+# define MOVE_SPEED 0.05
+# define ROTATION_SPEED 0.05
 
 typedef struct s_config
 {
@@ -48,6 +49,13 @@ typedef struct s_player
 	double	pos_y;
 	double	player_view;
 	int		player_count;
+	int		move_x;
+	int		move_y;
+	int		rotate;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 }				t_player;
 
 typedef struct s_ray
@@ -64,8 +72,16 @@ typedef struct s_ray
 	int		map_x;
 	int 	map_y;
 	int		step_x; 	//Dirección en la que avanza el rayo (izquierda/derecha, arriba/abajo).
-	int		step_y;	
-}			t_ray;
+	int		step_y;
+	// --- TEXTURE FIELDS ---
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
+	int		start;
+	int		end;
+	int		start_two;
+	int		end_two;
+} t_ray;
 
 typedef struct s_cube
 {
@@ -82,6 +98,8 @@ typedef struct s_cube
 	mlx_texture_t	*we_wall;
 	mlx_texture_t	*ea_wall;
 	mlx_image_t		*img;
+	// --- TEXTURE FIELDS ---
+	mlx_texture_t	*current_texture;
 }			t_cube;
 
 
@@ -131,4 +149,6 @@ int	rgb(int r, int g, int b, int a);
 
 
 void paint_wall_solid(t_cube *cube, int i, double distance_corrected);
+void set_texture(t_ray *ray, t_cube *game);
+void paint_texture(t_cube *game, t_ray *ray, int i);
 #endif

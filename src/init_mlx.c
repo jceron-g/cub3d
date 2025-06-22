@@ -20,12 +20,12 @@ int	load_texture(t_cube *cube)
 	south = mlx_load_png(cube->config->so);
 	west = mlx_load_png(cube->config->we);
 	east = mlx_load_png(cube->config->ea);
-	if (!north|| !south|| !west	|| !east)
+	if (!north || !south || !west || !east)
 		return (0);
-/* 	cube->no_wall_i = mlx_texture_to_image(cube->mlx, cube->no_wall);
-	cube->so_wall_i = mlx_texture_to_image(cube->mlx, cube->so_wall);
-	cube->we_wall_i = mlx_texture_to_image(cube->mlx, cube->we_wall);
-	cube->ea_wall_i = mlx_texture_to_image(cube->mlx, cube->ea_wall); */
+	cube->no_wall = north;
+	cube->so_wall = south;
+	cube->we_wall = west;
+	cube->ea_wall = east;
 	return (1);
 }
 
@@ -56,7 +56,7 @@ void paint_all(t_cube *game,int x, int y)
  		y++;
  	}
  }
-
+ 
 int	init_mlx(t_cube *cube)
 {
 	cube->mlx = mlx_init(WIDTH, HEIGHT, "Window", true);
