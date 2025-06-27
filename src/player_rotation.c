@@ -5,8 +5,8 @@ void	rotate_in_direction(t_cube *cube, double rot_speed)
 	t_player	*player;
 	double		aux_x;
 
-	player = &cube->player;
-	aux_x = p->dir_x;
+	player = cube->player;
+	aux_x = player->dir_x;
 	player->dir_x = player->dir_x * cos(rot_speed) - player->dir_y * sin(rot_speed);
 	player->dir_y = aux_x * sin(rot_speed) + player->dir_y * cos(rot_speed);
 	aux_x = player->plane_x;

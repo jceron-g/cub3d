@@ -24,7 +24,7 @@
 # define WIDTH 1600
 # define HEIGHT 900
 # define MOVE_SPEED 0.05
-# define ROTATION_SPEED 0.05
+# define ROTATION_SPEED 0.01
 
 typedef struct s_config
 {

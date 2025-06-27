@@ -33,7 +33,7 @@ BLUE      = \033[34;1m
 CYAN      = \033[37;1m
 RED		  = \033[31;1m
 
-SRC_FILES = auxiliar_functions free init main map parse raycasting utils init_mlx keys_control player_movement
+SRC_FILES = auxiliar_functions free init main map parse raycasting utils init_mlx keys_control player_movement player_rotation
 SRC_FILES_BONUS = 
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -75,6 +75,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR_BONUS)%.c | $(OBJF)
 clean:
 			@rm -frf $(OBJ_DIR)
 			@make clean -s -C include/libft/
+			@make clean -s -C include/MLX42/build/
 			@make all clean -C $(LIBFT)
 			@echo "$(RED)Cleaning libraries, please wait.$(RESET)"
 			@echo "$(RED)Cleaning program executables, please wait.$(RESET)"
@@ -83,15 +84,12 @@ fclean:
 			@rm -rf $(OBJ_DIR)
 			@rm -rf $(NAME)
 			@make clean -s -C include/libft/
+			@make clean -s -C include/MLX42/build/
 			@rm -rf $(NAME_B)
 			@rm -rf $(OBJ_BONUS)
 			@make fclean -C $(LIBFT)
 			@echo "$(YELLOW)Cleaning libraries.$(RESET)"
 			@echo "$(YELLOW)Cleaning program objects.$(RESET)"
-
-comment:
-			@make clean -s -C include/MLX42/build/
-			@make clean -s -C include/MLX42/build/
 
 re: fclean all
 			@echo "$(MAGENTA)Program recompiled$(RESET)"
