@@ -1,6 +1,6 @@
 #include "../include/cub3d.h"
 #include <math.h>
-#define ROT_SPEED 0.05
+//#define ROT_SPEED 0.05
 
 static int is_wall(t_cube *cube, double x, double y)
 {
@@ -78,7 +78,7 @@ int move_right(t_cube *cube)
 	return 0;
 }
 
-void rotate_player(t_cube *cube, double rotation_dir)
+/*void rotate_player(t_cube *cube, double rotation_dir)
 {
 	t_player *player;
 	double old_dir_x;
@@ -93,7 +93,7 @@ void rotate_player(t_cube *cube, double rotation_dir)
 	player->dir_y = old_dir_x * sin(rot) + player->dir_y * cos(rot);
 	player->plane_x = player->plane_x * cos(rot) - player->plane_y * sin(rot);
 	player->plane_y = old_plane_x * sin(rot) + player->plane_y * cos(rot);
-}
+}*/
 
 void player_movement(t_cube *cube)
 {
