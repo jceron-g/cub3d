@@ -5,15 +5,15 @@ int	key_press_control(mlx_key_data_t keydata, t_cube *cube)
   t_player  *player;
 
   player = cube->player;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		//añadir función de cerrar todo
-	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+	//if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+
+	if (mlx_is_key_down(cube->mlx, MLX_KEY_LEFT))
 	{
 		player->rotate = -1;
 		cube->config->map_view -= ROTATE_S;
-		printf("Llego!\n");
+		printf("Llego Izquierda!\n");
 	}
-	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+	if (mlx_is_key_down(cube->mlx, MLX_KEY_RIGHT))
 	{
 		player->rotate = 1;
 		cube->config->map_view += ROTATE_S;
