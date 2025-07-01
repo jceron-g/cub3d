@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/07/01 19:51:49 by malena-b         ###   ########.fr       */
+/*   Updated: 2025/07/01 20:22:09 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIDTH 1600
 # define HEIGHT 900
 # define MOVE_SPEED 0.05
-# define ROTATION_SPEED 0.01
+# define ROTATION_SPEED 0.025
 # define ROTATE_S 0.037
 
 typedef struct s_config

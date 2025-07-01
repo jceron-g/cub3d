@@ -10,13 +10,11 @@ int	key_press_control(mlx_key_data_t keydata, t_cube *cube)
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_LEFT))
 	{
 		player->rotate = -1;
-		cube->config->map_view -= ROTATE_S;
 		printf("Llego Izquierda!\n");
 	}
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_RIGHT))
 	{
 		player->rotate = 1;
-		cube->config->map_view += ROTATE_S;
 		printf("Llego!\n");
 	}
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)

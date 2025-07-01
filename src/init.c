@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacer <jacer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:33:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/06/22 17:08:43 by jacer            ###   ########.fr       */
+/*   Updated: 2025/07/01 20:23:01 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ t_player	*init_player(void)
 	if (!player)
 		return (NULL);
 	ft_bzero(player, sizeof(t_player));
-	player->dir_x = -1.0;
-	player->dir_y = 0.0;
-	player->plane_x = 0.0;
-	player->plane_y = 0.66; // FOV 60°
+	// Los vectores de dirección se configurarán en set_player_view()
 	player->move_x = 0;
 	player->move_y = 0;
 	player->rotate = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacer <jacer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:35:52 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/06/22 18:32:00 by jacer            ###   ########.fr       */
+/*   Updated: 2025/07/01 20:23:01 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,11 @@ void paint_texture(t_cube *game, t_ray *ray, int i)
 void paint_wall(t_cube *game, t_ray *ray, int i, double distance)
 {
 	double distance_corrected;
+	double player_angle;
 
-	distance_corrected = distance * cos(ray->angle - game->config->map_view);
+	// Calcular el ángulo del jugador usando atan2
+	player_angle = atan2(game->player->dir_y, game->player->dir_x);
+	distance_corrected = distance * cos(ray->angle - player_angle);
 	if (distance_corrected < 0.0001)
 		distance_corrected = 0.0001;
 	ray->start = -((int)(HEIGHT / distance_corrected)) / 2 + HEIGHT / 2;
@@ -158,10 +161,13 @@ void ft_raycaster(t_cube *cube)
 	int		 i;
 	double angle;
 	double start;
+	double player_angle;
 
 	i = 0;
 	angle = (FOV / WIDTH) * PI / 180;
-	start = cube->config->map_view - (angle * (WIDTH / 2));
+	// Calcular el ángulo del jugador usando atan2
+	player_angle = atan2(cube->player->dir_y, cube->player->dir_x);
+	start = player_angle - (angle * (WIDTH / 2));
 	while (i < WIDTH)
 	{
 		cube->ray[i].angle = start + (angle * i);

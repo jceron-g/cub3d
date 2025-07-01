@@ -53,8 +53,8 @@ int move_left(t_cube *cube)
 	double new_y;
 
 	player = cube->player;
-	new_x = player->pos_x + player->plane_x * MOVE_SPEED;
-	new_y = player->pos_y + player->plane_y * MOVE_SPEED;
+	new_x = player->pos_x - player->plane_x * MOVE_SPEED;
+	new_y = player->pos_y - player->plane_y * MOVE_SPEED;
 	if (!is_wall(cube, new_x, player->pos_y))
 		player->pos_x = new_x;
 	if (!is_wall(cube, player->pos_x, new_y))
@@ -69,8 +69,8 @@ int move_right(t_cube *cube)
 	double new_y;
 
 	player = cube->player;
-	new_x = player->pos_x - player->plane_x * MOVE_SPEED;
-	new_y = player->pos_y - player->plane_y * MOVE_SPEED;
+	new_x = player->pos_x + player->plane_x * MOVE_SPEED;
+	new_y = player->pos_y + player->plane_y * MOVE_SPEED;
 	if (!is_wall(cube, new_x, player->pos_y))
 		player->pos_x = new_x;
 	if (!is_wall(cube, player->pos_x, new_y))

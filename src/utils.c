@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacer <jacer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:47:37 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/06/22 18:32:43 by jacer            ###   ########.fr       */
+/*   Updated: 2025/07/01 20:23:01 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,32 @@ int	check_data(t_config *config)
 
 void	set_player_view(t_cube *cube)
 {
-	if(cube->player->player_view == 'S')
-		cube->config->map_view = (PI/2);
+	if(cube->player->player_view == 'N')
+	{
+		cube->player->dir_x = 0.0;
+		cube->player->dir_y = -1.0;
+		cube->player->plane_x = 0.66;  // 90° a la derecha de Norte = Este
+		cube->player->plane_y = 0.0;
+	}
+	else if(cube->player->player_view == 'S')
+	{
+		cube->player->dir_x = 0.0;
+		cube->player->dir_y = 1.0;
+		cube->player->plane_x = -0.66;  // 90° a la derecha de Sur = Oeste
+		cube->player->plane_y = 0.0;
+	}
 	else if(cube->player->player_view == 'E')
-		cube->config->map_view = (2*PI);
+	{
+		cube->player->dir_x = 1.0;
+		cube->player->dir_y = 0.0;
+		cube->player->plane_x = 0.0;
+		cube->player->plane_y = 0.66;  // 90° a la derecha de Este = Sur
+	}
 	else if (cube->player->player_view == 'W')
-		cube->config->map_view = PI;
-	else
-		cube->config->map_view = ((3*PI)/2);
+	{
+		cube->player->dir_x = -1.0;
+		cube->player->dir_y = 0.0;
+		cube->player->plane_x = 0.0;
+		cube->player->plane_y = -0.66;  // 90° a la derecha de Oeste = Norte
+	}
 }
