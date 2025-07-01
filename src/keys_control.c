@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys_control.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/01 20:55:17 by jceron-g          #+#    #+#             */
+/*   Updated: 2025/07/01 20:55:19 by jceron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 int	key_press_control(mlx_key_data_t keydata, t_cube *cube)
@@ -8,15 +20,9 @@ int	key_press_control(mlx_key_data_t keydata, t_cube *cube)
 	//if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_LEFT))
-	{
 		player->rotate = -1;
-		printf("Llego Izquierda!\n");
-	}
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_RIGHT))
-	{
 		player->rotate = 1;
-		printf("Llego!\n");
-	}
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		player->move_y = 1;
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
