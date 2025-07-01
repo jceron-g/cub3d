@@ -8,9 +8,17 @@ int	key_press_control(mlx_key_data_t keydata, t_cube *cube)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		//añadir función de cerrar todo
 	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+	{
 		player->rotate = -1;
+		cube->config->map_view -= ROTATE_S;
+		printf("Llego!\n");
+	}
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+	{
 		player->rotate = 1;
+		cube->config->map_view += ROTATE_S;
+		printf("Llego!\n");
+	}
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		player->move_y = 1;
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
