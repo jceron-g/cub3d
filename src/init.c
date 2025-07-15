@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:33:17 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/07/01 20:23:01 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:04:23 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,32 @@
 
 t_config	*init_config(void)
 {
-	t_config *config;
+	t_config	*config;
 
 	config = (t_config *)malloc(sizeof(t_config));
 	if (!config)
 		return (NULL);
 	ft_bzero(config, sizeof(t_config));
 	return (config);
-	
 }
 
 t_player	*init_player(void)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = (t_player *)malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
 	ft_bzero(player, sizeof(t_player));
-	// Los vectores de dirección se configurarán en set_player_view()
 	player->move_x = 0;
 	player->move_y = 0;
 	player->rotate = 0;
 	return (player);
 }
 
-
 t_ray	*init_ray(void)
 {
-	t_ray *ray;
+	t_ray	*ray;
 
 	ray = (t_ray *)malloc(sizeof(t_ray) * WIDTH);
 	if (!ray)
@@ -51,11 +48,9 @@ t_ray	*init_ray(void)
 	return (ray);
 }
 
-
-
 t_cube	*init_cube(void)
 {
-	t_cube *cube;
+	t_cube	*cube;
 
 	cube = (t_cube *)malloc(sizeof(t_cube));
 	if (!cube)
@@ -75,4 +70,3 @@ t_cube	*init_cube(void)
 	}
 	return (cube);
 }
-

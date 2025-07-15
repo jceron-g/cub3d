@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 14:39:19 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/03/19 13:00:13 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:04:23 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ int	check_neighbors(int pos_i, int pos_j, char **map)
 		{
 			if (pos_i == 0 || pos_j == 0)
 				return (0);
-			if (!(map[pos_i - 1]) || !(map[pos_i - 1][pos_j]) ||
-				!ft_strchr(VALID_NEIGHBORS, map[pos_i - 1][pos_j]))
+			if (!(map[pos_i - 1]) || !(map[pos_i - 1][pos_j])
+				|| !ft_strchr(VALID_NEIGHBORS, map[pos_i - 1][pos_j]))
 				return (0);
-			if (!(map[pos_i + 1]) || !(map[pos_i + 1][pos_j]) ||
-				!ft_strchr(VALID_NEIGHBORS, map[pos_i + 1][pos_j]))
+			if (!(map[pos_i + 1]) || !(map[pos_i + 1][pos_j])
+				|| !ft_strchr(VALID_NEIGHBORS, map[pos_i + 1][pos_j]))
 				return (0);
-			if (!(map[pos_i][pos_j - 1]) ||
-				!ft_strchr(VALID_NEIGHBORS, map[pos_i][pos_j - 1]))
+			if (!(map[pos_i][pos_j - 1]) || !ft_strchr(VALID_NEIGHBORS,
+					map[pos_i][pos_j - 1]))
 				return (0);
-			if (!(map[pos_i][pos_j + 1]) ||
-				!ft_strchr(VALID_NEIGHBORS, map[pos_i][pos_j + 1]))
+			if (!(map[pos_i][pos_j + 1]) || !ft_strchr(VALID_NEIGHBORS,
+					map[pos_i][pos_j + 1]))
 				return (0);
 		}
 	}
@@ -96,7 +96,9 @@ void	ft_parse_map(t_cube *cube, char **map)
 			}
 		}
 	}
-	printf("Player count: %d is in position x = %f y = %f and the letter is %f\n",cube->player->player_count, cube->player->pos_x, cube->player->pos_y, cube->player->player_view);
+	printf("Player count: %d is in position x = %f y = %f and the letter is "
+		"%f\n", cube->player->player_count, cube->player->pos_x,
+		cube->player->pos_y, cube->player->player_view);
 	if (cube->player->player_count != 1)
 		print_error("Error: Invalid number of players\n", cube->config);
 }
@@ -125,4 +127,3 @@ void	validate_rgb(t_config *config, char *color, int *values)
 	values[2] = ft_atoi(splitted[2]);
 	free_matrix(splitted);
 }
-

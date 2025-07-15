@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jacer <jacer@student.42.fr>                +#+  +:+       +#+         #
+#    By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 17:06:26 by jceron-g          #+#    #+#              #
-#    Updated: 2025/06/22 17:08:42 by jacer            ###   ########.fr        #
+#    Updated: 2025/07/15 20:26:23 by jceron-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ BLUE      = \033[34;1m
 CYAN      = \033[37;1m
 RED		  = \033[31;1m
 
-SRC_FILES = auxiliar_functions free init main map parse raycasting utils init_mlx keys_control player_movement player_rotation
+SRC_FILES = auxiliar_functions free init main map parse raycaster utils init_mlx keys_control player_movement player_rotation paint_textures player_view
 SRC_FILES_BONUS = 
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

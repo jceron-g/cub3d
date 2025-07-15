@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:47:37 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/07/01 20:23:01 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:27:42 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,34 +46,19 @@ int	check_data(t_config *config)
 	return (1);
 }
 
-void	set_player_view(t_cube *cube)
+void	player_movement(t_cube *cube)
 {
-	if(cube->player->player_view == 'N')
-	{
-		cube->player->dir_x = 0.0;
-		cube->player->dir_y = -1.0;
-		cube->player->plane_x = 0.66;  // 90° a la derecha de Norte = Este
-		cube->player->plane_y = 0.0;
-	}
-	else if(cube->player->player_view == 'S')
-	{
-		cube->player->dir_x = 0.0;
-		cube->player->dir_y = 1.0;
-		cube->player->plane_x = -0.66;  // 90° a la derecha de Sur = Oeste
-		cube->player->plane_y = 0.0;
-	}
-	else if(cube->player->player_view == 'E')
-	{
-		cube->player->dir_x = 1.0;
-		cube->player->dir_y = 0.0;
-		cube->player->plane_x = 0.0;
-		cube->player->plane_y = 0.66;  // 90° a la derecha de Este = Sur
-	}
-	else if (cube->player->player_view == 'W')
-	{
-		cube->player->dir_x = -1.0;
-		cube->player->dir_y = 0.0;
-		cube->player->plane_x = 0.0;
-		cube->player->plane_y = -0.66;  // 90° a la derecha de Oeste = Norte
-	}
+	t_player	*player;
+
+	player = cube->player;
+	if (player->move_y == 1)
+		move_forward(cube);
+	if (player->move_y == -1)
+		move_backward(cube);
+	if (player->move_x == -1)
+		move_left(cube);
+	if (player->move_x == 1)
+		move_right(cube);
+	if (player->rotate != 0)
+		rotate_player(cube, player->rotate);
 }

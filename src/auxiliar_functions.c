@@ -38,7 +38,7 @@ int	ft_check_digit(char *str)
 	i = 0;
 	while (str[i])
 	{
-		printf("%c\n",str[i]);
+		printf("%c\n", str[i]);
 		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;

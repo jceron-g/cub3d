@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacer <jacer@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:49:56 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/06/22 18:13:30 by jacer            ###   ########.fr       */
+/*   Updated: 2025/07/15 20:04:23 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void ft_parse(t_cube *cube, char **argv)
+void	ft_parse(t_cube *cube, char **argv)
 {
 	check_extension(argv[1]);
 	read_map_file(argv[1], cube->config);
@@ -22,7 +22,7 @@ void ft_parse(t_cube *cube, char **argv)
 	validate_rgb(cube->config, cube->config->f_rgb, cube->config->f_int);
 }
 
-void	my_keyhook(mlx_key_data_t keydata, void	*param)
+void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_cube	*cube;
 
@@ -31,7 +31,7 @@ void	my_keyhook(mlx_key_data_t keydata, void	*param)
 	key_release_control(keydata, cube);
 }
 
-void	my_hook(void	*param)
+void	my_hook(void *param)
 {
 	t_cube	*cube;
 
@@ -43,7 +43,8 @@ void	my_hook(void	*param)
 
 int	main(int argc, char **argv)
 {
-	t_cube		*cube;
+	t_cube	*cube;
+
 	cube = init_cube();
 	if (argc != 2)
 	{
@@ -54,9 +55,8 @@ int	main(int argc, char **argv)
 	set_player_view(cube);
 	init_mlx(cube);
 	cube->img = mlx_new_image(cube->mlx, WIDTH, HEIGHT);
-	paint_all(cube,0,0);
+	paint_all(cube, 0, 0);
 	mlx_image_to_window(cube->mlx, cube->img, 0, 0);
-	//exit(1);
 	ft_raycaster(cube);
 	mlx_key_hook(cube->mlx, my_keyhook, cube);
 	mlx_loop_hook(cube->mlx, my_hook, cube);

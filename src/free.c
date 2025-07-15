@@ -41,7 +41,7 @@ void	free_matrix(char **str)
 		str[i] = NULL;
 		i++;
 	}
-	free (str);
+	free(str);
 	str = NULL;
 }
 

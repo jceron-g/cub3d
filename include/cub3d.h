@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:41:06 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/07/15 18:50:35 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:37:06 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,16 @@ typedef struct s_ray
 	double	angle;
 	double	cos;
 	double	sin;
-	double	side_x; 	//Distancia hasta el primer borde de celda en cada eje.
+	double	side_x;
 	double	side_y;
-	double	delta_x; 	//Distancia para cruzar una celda en cada eje.
+	double	delta_x;
 	double	delta_y;
-	double	distance; 	//Variable implementada para corregir el ojo de pez que pudiera ocasionarse
-	int		side; 		//Indica si hemos chocado con una pared en x o y
+	double	distance;
+	int		side;
 	int		map_x;
-	int 	map_y;
-	int		step_x; 	//Dirección en la que avanza el rayo (izquierda/derecha, arriba/abajo).
+	int		map_y;
+	int		step_x;
 	int		step_y;
-	// --- TEXTURE FIELDS ---
 	double	wall_x;
 	int		tex_x;
 	int		tex_y;
@@ -82,27 +81,25 @@ typedef struct s_ray
 	int		end;
 	int		start_two;
 	int		end_two;
-} t_ray;
+}	t_ray;
 
 typedef struct s_cube
 {
-	t_config	*config;
-	t_ray		*ray;
-	t_player	*player;
-	mlx_t		*mlx;
-	mlx_image_t	*no_wall_i;
-	mlx_image_t	*so_wall_i;
-	mlx_image_t	*we_wall_i;
-	mlx_image_t	*ea_wall_i;
+	t_config		*config;
+	t_ray			*ray;
+	t_player		*player;
+	mlx_t			*mlx;
+	mlx_image_t		*no_wall_i;
+	mlx_image_t		*so_wall_i;
+	mlx_image_t		*we_wall_i;
+	mlx_image_t		*ea_wall_i;
 	mlx_texture_t	*no_wall;
 	mlx_texture_t	*so_wall;
 	mlx_texture_t	*we_wall;
 	mlx_texture_t	*ea_wall;
 	mlx_image_t		*img;
-	// --- TEXTURE FIELDS ---
 	mlx_texture_t	*current_texture;
 }			t_cube;
-
 
 /*INIT*/
 t_cube		*init_cube(void);
@@ -144,12 +141,15 @@ int			key_press_control(mlx_key_data_t keydata, t_cube *cube);
 int			key_press_control(mlx_key_data_t keydata, t_cube *cube);
 int			key_release_control(mlx_key_data_t keydata, t_cube *cube);
 
-void paint_all(t_cube *game,int x, int y);
-int	rgb(int r, int g, int b, int a);
-
-
-
-void paint_wall_solid(t_cube *cube, int i, double distance_corrected);
-void set_texture(t_ray *ray, t_cube *game);
-void paint_texture(t_cube *game, t_ray *ray, int i);
+void		paint_all(t_cube *game, int x, int y);
+int			rgb(int r, int g, int b, int a);
+void		paint_wall(t_cube *game, t_ray *ray, int i,
+				double distance_corrected);
+void		set_texture(t_ray *ray, t_cube *game);
+void		paint_texture(t_cube *game, t_ray *ray, int i);
+int			move_forward(t_cube *cube);
+int			move_backward(t_cube *cube);
+int			move_left(t_cube *cube);
+int			move_right(t_cube *cube);
+void		set_player_view_side(t_cube *cube);
 #endif
