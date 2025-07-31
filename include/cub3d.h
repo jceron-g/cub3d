@@ -134,6 +134,7 @@ void		print_error(char *str, t_config *config);
 void		free_matrix(char **str);
 void		free_config(t_config *config);
 void		free_mlx(t_cube *cube);
+void		free_and_exit(t_cube *cube);
 /*MOVEMENT*/
 void		player_movement(t_cube *cube);
 void		rotate_player(t_cube *cube, double rotation_dir);
@@ -152,4 +153,5 @@ int			move_backward(t_cube *cube);
 int			move_left(t_cube *cube);
 int			move_right(t_cube *cube);
 void		set_player_view_side(t_cube *cube);
+
 #endif

@@ -12,29 +12,14 @@
 
 #include "../include/cub3d.h"
 
-void	free_config(t_config *config)
-{
-	int	i;
-
-	if (config->file)
-	{
-		i = 0;
-		while (config->file[i])
-		{
-			free(config->file[i]);
-			i++;
-		}
-		free(config->file);
-	}
-}
 
 void	free_matrix(char **str)
 {
 	int	i;
-
+	
 	i = 0;
 	if (str == NULL)
-		return ;
+	return ;
 	while (str[i] != NULL)
 	{
 		free(str[i]);
@@ -43,6 +28,19 @@ void	free_matrix(char **str)
 	}
 	free(str);
 	str = NULL;
+}
+
+void	free_config(t_config *config)
+{
+	free_matrix(config->file);
+	free_matrix(config->map);
+	free(config->f_rgb);
+	free(config->c_rgb);
+	free(config->no);
+	free(config->so);
+	free(config->we);
+	free(config->ea);
+
 }
 
 void	free_mlx(t_cube *cube)
@@ -55,6 +53,8 @@ void	free_mlx(t_cube *cube)
 		mlx_delete_texture(cube->we_wall);
 	if (cube->ea_wall)
 		mlx_delete_texture(cube->ea_wall);
+	if (cube->current_texture)
+		mlx_delete_texture(cube->current_texture);
 	if (cube->no_wall_i)
 		mlx_delete_image(cube->mlx, cube->no_wall_i);
 	if (cube->so_wall_i)
@@ -63,6 +63,20 @@ void	free_mlx(t_cube *cube)
 		mlx_delete_image(cube->mlx, cube->we_wall_i);
 	if (cube->ea_wall_i)
 		mlx_delete_image(cube->mlx, cube->ea_wall_i);
+	if (cube->img)
+		mlx_delete_image(cube->mlx, cube->img);
 	if (cube->mlx)
 		mlx_terminate(cube->mlx);
+	free(cube->mlx);
+}
+
+void	free_and_exit(t_cube *cube)
+{
+	free_config(cube->config);
+	free(cube->config);
+	free_mlx(cube);
+	free(cube->player);
+	free(cube->ray);
+	free(cube);
+	exit(0);
 }

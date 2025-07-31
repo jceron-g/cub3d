@@ -29,6 +29,8 @@ int	key_press_control(mlx_key_data_t keydata, t_cube *cube)
 		player->move_y = -1;
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		player->move_x = 1;
+	if (mlx_is_key_down(cube->mlx, MLX_KEY_ESCAPE))
+		free_and_exit(cube);
 	return (0);
 }
 
