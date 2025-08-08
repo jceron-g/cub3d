@@ -130,6 +130,7 @@ int			ft_strempty(char *str);
 void		save_map(int i, t_config *config, char **file);
 int			ft_check_digit(char *str);
 void		print_error(char *str, t_config *config);
+void		print_error_cube(char *str, t_cube *cube);
 /*FREE*/
 void		free_matrix(char **str);
 void		free_config(t_config *config);

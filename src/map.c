@@ -86,13 +86,13 @@ void	ft_parse_map(t_cube *cube, char **map)
 		while (map[i][++j])
 		{
 			if (!ft_strchr(VALID_CHARS, map[i][j]))
-				print_error("Error: Invalid char in map", cube->config);
+				print_error_cube("Error: Invalid char in map", cube);
 			if (ft_strchr("NSWE", map[i][j]))
 				check_player(map[i][j], j, i, cube);
 			if (!check_neighbors(i, j, map))
 			{
 				ft_printf("Error: Found in i= %d j= %d a ", i, j);
-				print_error("char in a not valid position\n", cube->config);
+				print_error_cube("char in a not valid position\n", cube);
 			}
 		}
 	}
@@ -100,7 +100,7 @@ void	ft_parse_map(t_cube *cube, char **map)
 		"%f\n", cube->player->player_count, cube->player->pos_x,
 		cube->player->pos_y, cube->player->player_view);
 	if (cube->player->player_count != 1)
-		print_error("Error: Invalid number of players\n", cube->config);
+		print_error_cube("Error: Invalid number of players\n", cube);
 }
 
 void	validate_rgb(t_config *config, char *color, int *values)
