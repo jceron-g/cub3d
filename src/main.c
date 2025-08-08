@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:49:56 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/08/08 12:37:50 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:21:35 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,5 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(cube->mlx, my_hook, cube);
 	mlx_close_hook(cube->mlx, (mlx_closefunc)free_and_exit, cube);
 	mlx_loop(cube->mlx);
-	free_and_exit(cube);
 	return (0);
 }

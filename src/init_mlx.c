@@ -6,7 +6,7 @@
 /*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 20:03:29 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/07/15 20:03:30 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:26:33 by jceron-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	initialize_textures(t_cube *cube)
 	cube->so_wall = NULL;
 	cube->we_wall = NULL;
 	cube->ea_wall = NULL;
+	cube->current_texture = NULL;
+	cube->no_wall_i = NULL;
+	cube->so_wall_i = NULL;
+	cube->we_wall_i = NULL;
+	cube->ea_wall_i = NULL;
 }
 
 int	load_texture(t_cube *cube)
