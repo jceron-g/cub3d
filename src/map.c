@@ -36,7 +36,7 @@ void	save_map(int i, t_config *config, char **file)
 		while (config->map[j][i++])
 		{
 			if (!ft_strchr(VALID_CHARS, config->map[j][i]))
-				print_error("Error: Invalid characters detected\n", config);
+				print_error("Error: Invalid charactersss detected\n", config);
 		}
 	}
 }

@@ -95,13 +95,11 @@ void	read_map_file(char *filename, t_config *config)
 	close(fd);
 }
 
-void	save_data(t_config *config)
+void	save_data(t_config *config, t_cube *cube, int i)
 {
 	char	**file;
-	int		i;
 
 	file = config->file;
-	i = 0;
 	while (file[i])
 	{
 		if (ft_strncmp("NO ", file[i], 3) == 0)
@@ -122,4 +120,9 @@ void	save_data(t_config *config)
 	}
 	if (check_data(config))
 		save_map(i, config, file);
+	else
+	{
+		ft_printf("Error: Incorrect map parameters\n");
+		free_and_exit(cube);
+	}
 }

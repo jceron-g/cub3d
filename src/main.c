@@ -16,7 +16,7 @@ void	ft_parse(t_cube *cube, char **argv)
 {
 	check_extension(argv[1]);
 	read_map_file(argv[1], cube->config);
-	save_data(cube->config);
+	save_data(cube->config, cube, 0);
 	ft_parse_map(cube, cube->config->map);
 	validate_rgb(cube->config, cube->config->c_rgb, cube->config->c_int);
 	validate_rgb(cube->config, cube->config->f_rgb, cube->config->f_int);
@@ -53,7 +53,11 @@ int	main(int argc, char **argv)
 	}
 	ft_parse(cube, argv);
 	set_player_view(cube);
-	init_mlx(cube);
+	if (!init_mlx(cube))
+	{
+		ft_printf("Error: There is no file with that texture name.\n");
+		free_and_exit(cube);
+	}
 	cube->img = mlx_new_image(cube->mlx, WIDTH, HEIGHT);
 	paint_all(cube, 0, 0);
 	mlx_image_to_window(cube->mlx, cube->img, 0, 0);

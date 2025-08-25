@@ -120,7 +120,7 @@ void		ft_dda(t_ray *ray, t_cube *cube, int i);
 void		ft_raycaster(t_cube *cube);
 /*UTILS*/
 char		*space_skip_save(char *str);
-void		save_data(t_config *config);
+void		save_data(t_config *config, t_cube *cube, int i);
 void		save_routes(char **coord, char *route, t_config *config);
 int			check_data(t_config *config);
 void		set_player_view(t_cube *cube);
