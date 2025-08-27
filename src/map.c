@@ -96,9 +96,6 @@ void	ft_parse_map(t_cube *cube, char **map)
 			}
 		}
 	}
-	printf("Player count: %d is in position x = %f y = %f and the letter is "
-		"%f\n", cube->player->player_count, cube->player->pos_x,
-		cube->player->pos_y, cube->player->player_view);
 	if (cube->player->player_count != 1)
 		print_error_cube("Error: Invalid number of players\n", cube);
 }

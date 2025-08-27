@@ -12,6 +12,20 @@
 
 #include "../include/cub3d.h"
 
+int	check_rgb_size(int *rgb)
+{
+	int	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (rgb[i] > 255 || rgb[i] < 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_parse(t_cube *cube, char **argv)
 {
 	check_extension(argv[1]);
@@ -20,6 +34,12 @@ void	ft_parse(t_cube *cube, char **argv)
 	ft_parse_map(cube, cube->config->map);
 	validate_rgb(cube->config, cube->config->c_rgb, cube->config->c_int);
 	validate_rgb(cube->config, cube->config->f_rgb, cube->config->f_int);
+	if (check_rgb_size(cube->config->c_int)
+		|| check_rgb_size(cube->config->f_int))
+	{
+		ft_printf("Error: Not a valid number of rgb.\n");
+		free_and_exit(cube);
+	}
 }
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)

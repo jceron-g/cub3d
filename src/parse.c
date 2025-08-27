@@ -121,8 +121,5 @@ void	save_data(t_config *config, t_cube *cube, int i)
 	if (check_data(config))
 		save_map(i, config, file);
 	else
-	{
-		ft_printf("Error: Incorrect map parameters\n");
-		free_and_exit(cube);
-	}
+		print_error_and_exit("Error: Incorrect map parameters", cube);
 }

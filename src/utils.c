@@ -22,6 +22,12 @@ char	*space_skip_save(char *str)
 	return (ft_strdup(str + i));
 }
 
+void	print_error_and_exit(char	*error, t_cube	*cube)
+{
+	ft_printf("%s\n", error);
+	free_and_exit(cube);
+}
+
 void	save_routes(char **coord, char *route, t_config *config)
 {
 	if (!*coord)

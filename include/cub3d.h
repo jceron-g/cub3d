@@ -124,6 +124,7 @@ void		save_data(t_config *config, t_cube *cube, int i);
 void		save_routes(char **coord, char *route, t_config *config);
 int			check_data(t_config *config);
 void		set_player_view(t_cube *cube);
+void		print_error_and_exit(char	*error, t_cube	*cube);
 /*AUXILIAR FUNCTIONS*/
 int			ft_isspace(char c);
 int			ft_strempty(char *str);
