@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 20:03:29 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/08/08 13:26:33 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:32:52 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	load_texture(t_cube *cube)
 	south = mlx_load_png(cube->config->so);
 	west = mlx_load_png(cube->config->we);
 	east = mlx_load_png(cube->config->ea);
-	if (!north || !south || !west || !east)
-		return (0);
 	cube->no_wall = north;
 	cube->so_wall = south;
 	cube->we_wall = west;
 	cube->ea_wall = east;
+	if (!north || !south || !west || !east)
+		return (0);
 	return (1);
 }
 

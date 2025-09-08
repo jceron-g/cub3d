@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jceron-g <jceron-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malena-b <mario3d93@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:56:22 by jceron-g          #+#    #+#             */
-/*   Updated: 2025/08/08 13:22:20 by jceron-g         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:26:28 by malena-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	free_and_exit(t_cube *cube)
 		exit(0);
 	if (cube->config)
 	{
+		printf("LLEGA AQUI\n");
 		free_config(cube->config);
 		cube->config = NULL;
 	}
