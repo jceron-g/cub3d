@@ -1,6 +1,0 @@
-Guardar cada tipo de info en su variable asegurandose de que este bien estructurado
-Asegurarse que una vez acabado el parseo todos los tipos de informacion esten completos
-Comprobar que las rutas de las texturas sean validas (Lo hace MLX)
-
-
-Las coordenadas estan intercambiadas porque no funcionaban al reves
